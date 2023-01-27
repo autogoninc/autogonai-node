@@ -1,0 +1,22 @@
+{
+  "name": "autogonai-node",
+  "version": "1.0.0",
+  "description": "Node.js connector for Autogon Public APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/autogonai/autogonai-node.git"
+  },
+  "keywords": [
+    "autogon"
+  ],
+  "author": "Autogon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/autogonai/autogonai-node/issues"
+  },
+  "homepage": "https://github.com/autogonai/autogonai-node#readme"
+}
