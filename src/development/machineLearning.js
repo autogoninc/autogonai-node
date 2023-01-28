@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Machine Learning endpoints
  * @module MachineLearning 

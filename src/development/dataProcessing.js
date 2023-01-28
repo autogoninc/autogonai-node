@@ -1,3 +1,4 @@
+"use strict";
 
 const constants = require("../helpers/constants")
 const { validateRequiredParameters, } = require("../helpers/validation")
@@ -10,15 +11,18 @@ const { validateRequiredParameters, } = require("../helpers/validation")
 const DataProcessing = superclass => class extends superclass {
 
     /**
+     * Data Input
+     * 
+     * Specify the data sources, this functionality can take database connection, CSV or JSON files
      * 
      * @param {int} projectId current project's ID
      * @param {null} parentId previous block ID
      * @param {int} blockId current block ID
      * @param {object} args block arguments (refer to documentation)
      * 
-     * @link https://autogon-ai.gitbook.io/autogon-for-developers/autogon-engine/data-processing/data-input-dp_1
+     * {@link https://autogon-ai.gitbook.io/autogon-for-developers/autogon-engine/data-processing/data-input-dp_1}
      * 
-     * @returns {object} Data Input Successful
+     * @returns {object} StateManagement Object
      */
     data_input(projectId, parentId, blockId, args = {}) {
 
@@ -32,16 +36,16 @@ const DataProcessing = superclass => class extends superclass {
         // parameter validation
         validateRequiredParameters(functionCode, args);
 
+        // send data input request
         return this.sendRequest(
             "POST",
-            constants.ENGINE_ENDPOINT,
-            {
-                project_id: projectId,
-                parent_id: parentId,
-                block_id: blockId,
-                function_code: functionCode,
-                args
-            });
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
     }
 }
 

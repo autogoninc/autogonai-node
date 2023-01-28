@@ -1,9 +1,7 @@
-const validateRequiredParameters = (endpoint, args) => {
-    if (endpoint === "DP_1") {
-        return null;
-    }
+"use strict";
 
-    if (endpoint === "DP_2") {
-        return null;
-    }
+function validateRequiredParameters(endpoint, args) {
+    return null;
 }
+
+module.exports = { validateRequiredParameters }

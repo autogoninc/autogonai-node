@@ -1,7 +1,11 @@
-const flowObjects = (...functions) => input => functions.reduceRight(
-    (input, fn) => fn(input),
-    input
-);
+"use strict";
+
+function flowObjects(...functions) {
+    return input => functions.reduceRight(
+        (input, fn) => fn(input),
+        input
+    );
+}
 
 module.exports = {
     flowObjects,

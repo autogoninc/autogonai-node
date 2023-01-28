@@ -1,3 +1,5 @@
+"use strict";
+
 class Dashboard {
     constructor(client) {
         this.client = client;
