@@ -1,11 +1,48 @@
-const data_input = () => {
-    functionCode = "DP_1";
+
+const constants = require("../helpers/constants")
+const { validateRequiredParameters, } = require("../helpers/validation")
+
+/**
+ * Data Processing endpoints
+ * @module DataProcessing
+ * @param {*} superclass 
+ */
+const DataProcessing = superclass => class extends superclass {
+
+    /**
+     * 
+     * @param {int} projectId current project's ID
+     * @param {null} parentId previous block ID
+     * @param {int} blockId current block ID
+     * @param {object} args block arguments (refer to documentation)
+     * 
+     * @link https://autogon-ai.gitbook.io/autogon-for-developers/autogon-engine/data-processing/data-input-dp_1
+     * 
+     * @returns {object} Data Input Successful
+     */
+    data_input(projectId, parentId, blockId, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_1";
+
+        // these parameters are compulsory for this block
+        parentId = null;
+        blockId = 1;
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT,
+            {
+                project_id: projectId,
+                parent_id: parentId,
+                block_id: blockId,
+                function_code: functionCode,
+                args
+            });
+    }
 }
 
-const missing_data = () => {
-    functionCode = "DP_2";
-}
-
-module.exports = {
-    data_input
-};
+module.exports = DataProcessing;

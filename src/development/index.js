@@ -1,4 +1,3 @@
-const { data_input } = require("./dataProcessing")
+"use strict";
 
-module.exports = { data_input, };
-
+module.exports.DataProcessing = require("./dataProcessing");

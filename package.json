@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/autogonai/autogonai-node/issues"
   },
-  "homepage": "https://github.com/autogonai/autogonai-node#readme"
+  "homepage": "https://github.com/autogonai/autogonai-node#readme",
+  "devDependencies": {
+    "axios": "^1.2.5"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
 }
