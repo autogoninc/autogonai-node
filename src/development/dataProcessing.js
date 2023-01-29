@@ -36,7 +36,7 @@ const DataProcessing = superclass => class extends superclass {
         // parameter validation
         validateRequiredParameters(functionCode, args);
 
-        // send data input request
+        // send request
         return this.sendRequest(
             "POST",
             constants.ENGINE_ENDPOINT, {

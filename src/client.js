@@ -13,6 +13,13 @@ const { flowObjects } = require("./helpers/utils");
  */
 class Client extends flowObjects(...Object.values(blocks))(API) {
 
+    /**
+     * 
+     * @param {String} apiKey Authentication key (refer to documentation)
+     * {@link https://autogon-ai.gitbook.io/autogon-for-developers/autogon-engine/data-processing/data-input-dp_1}
+     * 
+     * @param {object} options other parameters
+     */
     constructor(apiKey, options = {}) {
         // if baseURL is not provided, use default
         options.baseURL ||= constants.BASE_URL;
