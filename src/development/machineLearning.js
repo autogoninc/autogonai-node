@@ -8,7 +8,6 @@ const { validateRequiredParameters } = require("../helpers/validation");
  * @module MachineLearning 
  * @param {*} superclass
  */
-
 const MachineLearning = superclass => class extends superclass {
 
     /**
@@ -45,29 +44,224 @@ const MachineLearning = superclass => class extends superclass {
         });
     }
 
-    multiple_linear_regression = () => {
+    simple_linear_regression_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_R_1_P";
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    multiple_linear_regression = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
         functionCode = "ML_R_2";
-        return this.sendRequest();
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
     }
 
-    polynomial_linear_regression = () => {
+    multiple_linear_regression_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_R_2_P";
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    polynomial_linear_regression = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
         functionCode = "ML_R_3";
-        return this.sendRequest();
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
     }
 
-    support_vector_regression = () => {
+    polynomial_linear_regression_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_R_3_P";
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    support_vector_regression = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
         functionCode = "ML_R_4";
-        return this.sendRequest();
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
     }
 
-    decision_tree_regression = () => {
+    support_vector_regression_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_R_4_P";
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    decision_tree_regression = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
         functionCode = "ML_R_5";
-        return this.sendRequest();
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
     }
 
-    random_forest_regression = () => {
+    decision_tree_regression_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_R_5_P";
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    random_forest_regression = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
         functionCode = "ML_R_6";
-        return this.sendRequest();
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    random_forest_regression_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_R_6_P";
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
     }
 }
 
