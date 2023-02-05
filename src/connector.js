@@ -35,7 +35,7 @@ class API {
         };
 
         // create axios object
-        return axios.create({ baseURL: this.URL + endpoint, headers, timeout: this.timeout, })
+        return axios.create({ baseURL: this.URL + endpoint, headers, timeout: this.timeout })
             // send request with specified method and endpoint
             .request({
                 method,
