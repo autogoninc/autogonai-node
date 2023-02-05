@@ -27,7 +27,7 @@ const MachineLearning = superclass => class extends superclass {
     simple_linear_regression = (projectId, parentId, blockId, args = {}) => {
 
         // mandatory parameters
-        const functionCode = "ML_R_1";
+        functionCode = "ML_R_1";
 
         // parameter validation
         validateRequiredParameters(functionCode, args);
@@ -250,6 +250,430 @@ const MachineLearning = superclass => class extends superclass {
         functionCode = "ML_R_6_P";
 
         // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    /// END OF REGRESSION
+
+    logistic_regression = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_1";
+
+        // parameter validateion
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+
+    logistic_regression_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_1_P";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id, parentId,
+            block_id, blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+
+    logistic_regression_metrics = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_1_M";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    k_nearest_neighbors = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_2";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    k_nearest_neighbors_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_2_P";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    k_nearest_neighbors_metrics = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_2_M";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    support_vector_machine = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_3";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    support_vector_machine_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_3_P";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    support_vector_machine_metrics = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_3_M";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    kernel_svm = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_4";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    kernel_svm_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_4_P";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    kernel_svm_metrics = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_4_M";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    naive_bayes = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_5";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    naive_bayes_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_5_P";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    naive_bayes_metrics = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_5_M";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    decision_tree_classification = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_6";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    decision_tree_classification_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_6_P";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    decision_tree_classification_metrics = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_6_M";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    random_forest_classification = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_7";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    random_forest_classification_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_7_P";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    random_forest_classification_metrics = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_7_M";
+
+        // parameter validation
         validateRequiredParameters(functionCode, args);
 
         // send request
