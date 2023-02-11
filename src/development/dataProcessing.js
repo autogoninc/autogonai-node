@@ -15,23 +15,23 @@ const DataProcessing = superclass => class extends superclass {
      * 
      * Specify the data sources, this functionality can take database connection, CSV or JSON files
      * 
-     * @param {int} projectId current project's ID
-     * @param {null} parentId previous block ID
-     * @param {int} blockId current block ID
+     * @param {int} project_id current project's ID
+     * @param {null} parent_id previous block ID
+     * @param {int} block_id current block ID
      * @param {object} args block arguments (refer to documentation)
      * 
      * {@link https://autogon-ai.gitbook.io/autogon-for-developers/autogon-engine/data-processing/data-input-dp_1}
      * 
      * @returns {object} StateManagement Object
      */
-    data_input(projectId, parentId, blockId, args = {}) {
+    data_input(project_id, parent_id, block_id, args = {}) {
 
         // mandatory parameters
         const functionCode = "DP_1";
 
         // these parameters are compulsory for this block
-        parentId = null;
-        blockId = 1;
+        parent_id = null;
+        block_id = 1;
 
         // parameter validation
         validateRequiredParameters(functionCode, args);
@@ -40,9 +40,129 @@ const DataProcessing = superclass => class extends superclass {
         return this.sendRequest(
             "POST",
             constants.ENGINE_ENDPOINT, {
-            project_id: projectId,
-            parent_id: parentId,
-            block_id: blockId,
+            project_id,
+            parent_id,
+            block_id,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    missing_data(project_id, parent_id, block_id, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_2";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id,
+            parent_id,
+            block_id,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    data_encoding(project_id, parent_id, block_id, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_3";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id,
+            parent_id,
+            block_id,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    data_split(project_id, parent_id, block_id, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_3";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id,
+            parent_id,
+            block_id,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    feature_scaling(project_id, parent_id, block_id, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_5";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id,
+            parent_id,
+            block_id,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    drop_columns(project_id, parent_id, block_id, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_6";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id,
+            parent_id,
+            block_id,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    time_stepper(project_id, parent_id, block_id, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_7";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id,
+            parent_id,
+            block_id,
             function_code: functionCode,
             args
         });

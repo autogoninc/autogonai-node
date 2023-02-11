@@ -22,10 +22,10 @@ class Project {
         this.client = client;
     }
 
-    get(appId = null) {
+    get(app_id = null) {
 
-        if (appId && isUUID(appId)) {
-            this.endpoint = `/engine/project/${appId}`;
+        if (app_id && isUUID(app_id)) {
+            this.endpoint = `${this.endpoint}${app_id}`;
         }
 
         return this.client.sendRequest(
@@ -34,18 +34,18 @@ class Project {
         );
     }
 
-    create(name, description) {
+    create(project_name, project_description) {
         return this.client.sendRequest(
             "POST",
             this.endpoint, {
-            project_name: name,
-            project_description: description
+            project_name,
+            project_description
         });
     }
 
-    delete(appId) {
-        if (isUUID(appId)) {
-            this.endpoint += appId;
+    delete(app_id) {
+        if (isUUID(app_id)) {
+            this.endpoint += app_id;
         } else {
             return "Incorrect UUID";
         }
@@ -64,9 +64,9 @@ class StateManagement {
         this.endpoint = "/engine/statemanagement"
     }
 
-    get(blockId, projectId) {
+    get(block_id, project_id) {
 
-        this.endpoint = `${this.endpoint}/${blockId}/?project=${projectId}`;
+        this.endpoint = `${this.endpoint}/${block_id}/?project=${project_id}`;
 
         return this.client.sendRequest(
             "GET",
@@ -84,7 +84,7 @@ class Dataset {
     get(id) {
 
         if (id) {
-            this.endpoint = `${this.endpoint}${id}/`;
+            this.endpoint = `${this.endpoint}${id}`;
         }
 
         return this.client.sendRequest(
