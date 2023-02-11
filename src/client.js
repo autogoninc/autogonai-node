@@ -31,7 +31,8 @@ class Client extends flowObjects(...Object.values(blocks))(API) {
         });
 
         // initialze Other APIs
-        this.Project = new modules.Dataset(this);
+        this.Dashboard = new modules.Dashboard(this)
+        this.Project = new modules.Project(this);
         this.StateManagement = new modules.StateManagement(this);
         this.Dataset = new modules.Dataset(this);
     }
