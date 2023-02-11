@@ -24,7 +24,7 @@ class API {
      * @param {object} payload Request body
      * @returns object
      */
-    sendRequest(method, endpoint, payload) {
+    sendRequest(method, endpoint, payload = {}) {
 
         // generate request headers
         const headers = {
