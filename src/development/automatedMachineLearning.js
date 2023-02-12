@@ -1,4 +1,10 @@
+"use strict";
+
+const constants = require("../helpers/constants")
+const { validateRequiredParameters, } = require("../helpers/validation")
+
 const AutoMachineLearning = superclass => class extends superclass {
+    
     auto_regression(project_id, parent_id, block_id, args = {}) {
 
         // mandatory parameters
@@ -119,3 +125,5 @@ const AutoMachineLearning = superclass => class extends superclass {
         });
     }
 }
+
+module.exports = AutoMachineLearning;

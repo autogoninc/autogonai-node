@@ -64,7 +64,7 @@ class StateManagement {
         this.endpoint = "/engine/statemanagement"
     }
 
-    get(block_id, project_id) {
+    get(project_id, block_id) {
 
         this.endpoint = `${this.endpoint}/${block_id}/?project=${project_id}`;
 
@@ -78,13 +78,13 @@ class StateManagement {
 class Dataset {
     constructor(client) {
         this.client = client;
-        this.endpoint = "/engine/datasets/"
+        this.endpoint = "/engine/datasets"
     }
 
-    get(id) {
+    get(id = null) {
 
         if (id) {
-            this.endpoint = `${this.endpoint}${id}`;
+            this.endpoint = `${this.endpoint}/${id}`;
         }
 
         return this.client.sendRequest(
@@ -93,13 +93,22 @@ class Dataset {
         );
     }
 
-    create() {
+    create(dataset_name, dataset_description, dataset_type, dataset_url) {
+        dataset_type = dataset_type.toLowerCase();
 
+        if (dataset_type != "csv" || dataset_type != "json") {
+            return "Unsupported file type";
+        }
+
+        return this.sendRequest(
+            "POST",
+            this.endpoint, {
+            dataset_name,
+            dataset_description,
+            dataset_type,
+            dataset_url
+        });
     }
-
-    // delete() {
-
-    // }
 }
 
 module.exports = {
