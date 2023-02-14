@@ -1111,6 +1111,168 @@ const MachineLearning = superclass => class extends superclass {
             args
         });
     }
+
+    hierarchical_clustering = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_7";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    hierarchical_clustering_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CN_7_P";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+
+    kmeans_clustering_find_clusters = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CG_2_F";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    kmeans_clustering = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CG_2";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    kmeans_clustering_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "ML_CG_2_P";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    xgboost = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "MS_X";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    xgboost_predict = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "MS_X_P";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    xgboost_metrics = (projectId, parentId, blockId, args = {}) => {
+
+        // mandatory parameters
+        functionCode = "MS_X_M";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id: projectId,
+            parent_id: parentId,
+            block_id: blockId,
+            function_code: functionCode,
+            args
+        });
+    }
+
 }
 
 module.exports = MachineLearning;

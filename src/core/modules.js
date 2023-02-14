@@ -96,9 +96,9 @@ class Dataset {
     create(dataset_name, dataset_description, dataset_type, dataset_url) {
         dataset_type = dataset_type.toLowerCase();
 
-        if (dataset_type != "csv" || dataset_type != "json") {
-            return "Unsupported file type";
-        }
+        // if (dataset_type !== "csv" || dataset_type !== "json") {
+        //     return "Unsupported file type";
+        // }
 
         return this.sendRequest(
             "POST",
