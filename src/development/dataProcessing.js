@@ -91,7 +91,7 @@ const DataProcessing = superclass => class extends superclass {
     data_split(project_id, parent_id, block_id, args = {}) {
 
         // mandatory parameters
-        const functionCode = "DP_3";
+        const functionCode = "DP_4";
 
         // parameter validation
         validateRequiredParameters(functionCode, args);

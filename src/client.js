@@ -1,10 +1,14 @@
 "use strict";
 
 // imports
+const axios = require("axios");
+const FormData = require("form-data");
+const fs = require("fs");
+
 const API = require("./connector");
 const blocks = require("./development");
-const modules = require("./core/modules"); // other APIS
 const constants = require("./helpers/constants");
+const modules = require("./core/modules"); // other APIS
 
 const { flowObjects } = require("./helpers/utils");
 
@@ -29,12 +33,33 @@ class Client extends flowObjects(...Object.values(blocks))(API) {
             apiKey: apiKey,
             ...options
         });
+        this.apiKey = apiKey;
+        this.options = options;
 
         // initialze Other APIs
         this.Dashboard = new modules.Dashboard(this)
         this.Project = new modules.Project(this);
         this.StateManagement = new modules.StateManagement(this);
         this.Dataset = new modules.Dataset(this);
+    }
+
+    upload(filePath) {
+        const endpoint = "/engine/upload/";
+
+        const form = new FormData();
+        form.append("file", fs.createReadStream(filePath));
+
+        const headers = {
+            ...form.getHeaders(),
+            ...{
+                "X-AUG-KEY": this.apiKey,
+                "User-Agent": `${constants.appName}/${constants.appVersion}`
+            }
+        }
+
+        return axios.post(this.options.baseURL + endpoint, form, {
+            headers
+        });
     }
 }
 

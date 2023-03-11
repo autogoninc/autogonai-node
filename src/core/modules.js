@@ -78,7 +78,7 @@ class StateManagement {
 class Dataset {
     constructor(client) {
         this.client = client;
-        this.endpoint = "/engine/datasets"
+        this.endpoint = "/engine/datasets/"
     }
 
     get(id = null) {
@@ -100,7 +100,7 @@ class Dataset {
         //     return "Unsupported file type";
         // }
 
-        return this.sendRequest(
+        return this.client.sendRequest(
             "POST",
             this.endpoint, {
             dataset_name,
