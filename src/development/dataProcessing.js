@@ -167,6 +167,47 @@ const DataProcessing = superclass => class extends superclass {
             args
         });
     }
+
+    data_encoding(project_id, parent_id, block_id, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_3";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id,
+            parent_id,
+            block_id,
+            function_code: functionCode,
+            args
+        });
+    }
+
+    array_reshaping(project_id, parent_id, block_id, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id,
+            parent_id,
+            block_id,
+            function_code: functionCode,
+            args
+        });
+    }
+
 }
 
 module.exports = DataProcessing;
