@@ -68,6 +68,26 @@ const DataProcessing = superclass => class extends superclass {
         });
     }
 
+    feature_sampling(project_id, parent_id, block_id, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_FSP";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id,
+            parent_id,
+            block_id,
+            function_code: functionCode,
+            args
+        });
+    }
+
     data_encoding(project_id, parent_id, block_id, args = {}) {
 
         // mandatory parameters
@@ -168,10 +188,30 @@ const DataProcessing = superclass => class extends superclass {
         });
     }
 
-    data_encoding(project_id, parent_id, block_id, args = {}) {
+    feature_sampling(project_id, parent_id, block_id, args = {}) {
 
         // mandatory parameters
-        const functionCode = "DP_3";
+        const functionCode = "DP_FSP";
+
+        // parameter validation
+        validateRequiredParameters(functionCode, args);
+
+        // send request
+        return this.sendRequest(
+            "POST",
+            constants.ENGINE_ENDPOINT, {
+            project_id,
+            parent_id,
+            block_id,
+            function_code: functionCode,
+            args
+        });
+    }
+    
+    cast_columns(project_id, parent_id, block_id, args = {}) {
+
+        // mandatory parameters
+        const functionCode = "DP_CST";
 
         // parameter validation
         validateRequiredParameters(functionCode, args);
@@ -191,7 +231,7 @@ const DataProcessing = superclass => class extends superclass {
     array_reshaping(project_id, parent_id, block_id, args = {}) {
 
         // mandatory parameters
-        const functionCode = "DP_";
+        const functionCode = "DP_RSH";
 
         // parameter validation
         validateRequiredParameters(functionCode, args);
