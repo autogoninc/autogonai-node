@@ -168,4 +168,4 @@ const AIServices = superclass => class extends superclass {
     }
 }
 
-module.exports = { AIServices }
+module.exports = AIServices;
