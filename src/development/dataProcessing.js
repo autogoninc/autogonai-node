@@ -168,10 +168,10 @@ const DataProcessing = superclass => class extends superclass {
         });
     }
 
-    data_encoding(project_id, parent_id, block_id, args = {}) {
+    reshape_array(project_id, parent_id, block_id, args = {}) {
 
         // mandatory parameters
-        const functionCode = "DP_3";
+        const functionCode = "DP_RSH";
 
         // parameter validation
         validateRequiredParameters(functionCode, args);
@@ -188,10 +188,15 @@ const DataProcessing = superclass => class extends superclass {
         });
     }
 
-    array_reshaping(project_id, parent_id, block_id, args = {}) {
+    automated_data_preprocessing(project_id, parent_id, block_id, args = {}) {
+        // Automated Data Prepcoessing goes in here
 
-        // mandatory parameters
-        const functionCode = "DP_";
+        const functionCode = "DP_ADP";
+    }
+
+    dataset_datatypes(project_id, parent_id, block_id, args = {}) {
+        // define function code
+        const functionCode = "DP_DTY";
 
         // parameter validation
         validateRequiredParameters(functionCode, args);
@@ -206,6 +211,7 @@ const DataProcessing = superclass => class extends superclass {
             function_code: functionCode,
             args
         });
+
     }
 
 }
