@@ -94,7 +94,7 @@ const DeepLearning = (superclass) =>
         args,
       });
     }
-    artificial_neural_network_predicting(
+    artificial_neural_network_predict(
       project_id,
       parent_id,
       block_id,
@@ -179,7 +179,7 @@ const DeepLearning = (superclass) =>
         args,
       });
     }
-    organizing_map_predicting(project_id, parent_id, block_id, args = {}) {
+    organizing_map_predict(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DL_SOM_P";
 
@@ -274,7 +274,7 @@ const DeepLearning = (superclass) =>
         args,
       });
     }
-    restricted_boltzmann_machine_predicting(
+    restricted_boltzmann_machine_predict(
       project_id,
       parent_id,
       block_id,
