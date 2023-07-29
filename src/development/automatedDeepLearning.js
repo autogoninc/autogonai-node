@@ -13,6 +13,7 @@ const AutomatedDeepLearning = (superclass) =>
     auto_image_classifier_init(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_IMC_I";
+
       // parameter validation
       validateRequiredParameters(functionCode, args);
 
@@ -28,6 +29,7 @@ const AutomatedDeepLearning = (superclass) =>
     auto_image_classifier_train(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_IMC_T";
+
       // parameter validation
       validateRequiredParameters(functionCode, args);
 
@@ -43,6 +45,7 @@ const AutomatedDeepLearning = (superclass) =>
     auto_image_regressor_init(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_IMR";
+
       // parameter validation
       validateRequiredParameters(functionCode, args);
 
@@ -58,6 +61,7 @@ const AutomatedDeepLearning = (superclass) =>
     auto_image_regressor_train(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_IMR_T";
+
       // parameter validation
       validateRequiredParameters(functionCode, args);
 
@@ -73,6 +77,7 @@ const AutomatedDeepLearning = (superclass) =>
     auto_text_classifier_init(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_TXC_I";
+
       // parameter validation
       validateRequiredParameters(functionCode, args);
 
@@ -104,6 +109,7 @@ const AutomatedDeepLearning = (superclass) =>
     auto_text_regressor_init(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_TXR_I";
+
       // parameter validation
       validateRequiredParameters(functionCode, args);
 
@@ -119,6 +125,7 @@ const AutomatedDeepLearning = (superclass) =>
     auto_text_regressor_train(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_TXR_T";
+
       // parameter validation
       validateRequiredParameters(functionCode, args);
 
@@ -131,6 +138,7 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+
     auto_structured_data_classifier_init(
       project_id,
       parent_id,
