@@ -4,15 +4,15 @@ const constants = require("../helpers/constants");
 const { validateRequiredParameters } = require("../helpers/validation");
 
 /**
- * Deep Learning endpoints
- * @module DeepLearning
+ * Automated DeepLearning endpoints
+ * @module AutomatedDeepLearning
  * @param {*} superclass
  */
-const DeepLearning = (superclass) =>
+const AutomatedDeepLearning = (superclass) =>
   class extends superclass {
-    artificial_neural_network_init(project_id, parent_id, block_id, args = {}) {
+    auto_image_classifier_init(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
-      const functionCode = "DL_ANN_S_I";
+      const functionCode = "A_DL_IMC_I";
 
       // parameter validation
       validateRequiredParameters(functionCode, args);
@@ -26,14 +26,127 @@ const DeepLearning = (superclass) =>
         args,
       });
     }
-    artificial_neural_network_train(
+    auto_image_classifier_train(project_id, parent_id, block_id, args = {}) {
+      // mandatory parameters
+      const functionCode = "A_DL_IMC_T";
+
+      // parameter validation
+      validateRequiredParameters(functionCode, args);
+
+      // send request
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      });
+    }
+    auto_image_regressor_init(project_id, parent_id, block_id, args = {}) {
+      // mandatory parameters
+      const functionCode = "A_DL_IMR";
+
+      // parameter validation
+      validateRequiredParameters(functionCode, args);
+
+      // send request
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      });
+    }
+    auto_image_regressor_train(project_id, parent_id, block_id, args = {}) {
+      // mandatory parameters
+      const functionCode = "A_DL_IMR_T";
+
+      // parameter validation
+      validateRequiredParameters(functionCode, args);
+
+      // send request
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      });
+    }
+    auto_text_classifier_init(project_id, parent_id, block_id, args = {}) {
+      // mandatory parameters
+      const functionCode = "A_DL_TXC_I";
+
+      // parameter validation
+      validateRequiredParameters(functionCode, args);
+
+      // send request
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      });
+    }
+    auto_text_classifier_train(project_id, parent_id, block_id, args = {}) {
+      // mandatory parameters
+      const functionCode = "A_DL_TXC_T";
+
+      // parameter validation
+      validateRequiredParameters(functionCode, args);
+
+      // send request
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      });
+    }
+    auto_text_regressor_init(project_id, parent_id, block_id, args = {}) {
+      // mandatory parameters
+      const functionCode = "A_DL_TXR_I";
+
+      // parameter validation
+      validateRequiredParameters(functionCode, args);
+
+      // send request
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      });
+    }
+    auto_text_regressor_train(project_id, parent_id, block_id, args = {}) {
+      // mandatory parameters
+      const functionCode = "A_DL_TXR_T";
+
+      // parameter validation
+      validateRequiredParameters(functionCode, args);
+
+      // send request
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      });
+    }
+
+    auto_structured_data_classifier_init(
       project_id,
       parent_id,
       block_id,
       args = {}
     ) {
       // mandatory parameters
-      const functionCode = "DL_ANN_T";
+      const functionCode = "A_DL_SDC_I";
 
       // parameter validation
       validateRequiredParameters(functionCode, args);
@@ -47,14 +160,14 @@ const DeepLearning = (superclass) =>
         args,
       });
     }
-    artificial_neural_network_evaluate(
+    auto_structured_data_classifier_train(
       project_id,
       parent_id,
       block_id,
       args = {}
     ) {
       // mandatory parameters
-      const functionCode = "DL_ANN_E";
+      const functionCode = "A_DL_SDC_T";
 
       // parameter validation
       validateRequiredParameters(functionCode, args);
@@ -68,14 +181,14 @@ const DeepLearning = (superclass) =>
         args,
       });
     }
-    artificial_neural_network_predict(
+    auto_structured_data_regressor_init(
       project_id,
       parent_id,
       block_id,
       args = {}
     ) {
       // mandatory parameters
-      const functionCode = "DL_ANN_P";
+      const functionCode = "A_DL_SDR_I";
 
       // parameter validation
       validateRequiredParameters(functionCode, args);
@@ -89,141 +202,14 @@ const DeepLearning = (superclass) =>
         args,
       });
     }
-    organizing_map_init(project_id, parent_id, block_id, args = {}) {
-      // mandatory parameters
-      const functionCode = "DL_SOM_I";
-
-      // parameter validation
-      validateRequiredParameters(functionCode, args);
-
-      // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
-    }
-    organizing_map_train(project_id, parent_id, block_id, args = {}) {
-      // mandatory parameters
-      const functionCode = "DL_SOM_T";
-
-      // parameter validation
-      validateRequiredParameters(functionCode, args);
-
-      // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
-    }
-    organizing_map_evaluate(project_id, parent_id, block_id, args = {}) {
-      // mandatory parameters
-      const functionCode = "DL_SOM_E";
-
-      // parameter validation
-      validateRequiredParameters(functionCode, args);
-
-      // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
-    }
-    organizing_map_predict(project_id, parent_id, block_id, args = {}) {
-      // mandatory parameters
-      const functionCode = "DL_SOM_P";
-
-      // parameter validation
-      validateRequiredParameters(functionCode, args);
-
-      // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
-    }
-    restricted_boltzmann_machine_init(
+    auto_structured_data_regressor_train(
       project_id,
       parent_id,
       block_id,
       args = {}
     ) {
       // mandatory parameters
-      const functionCode = "DL_RBM_I";
-
-      // parameter validation
-      validateRequiredParameters(functionCode, args);
-
-      // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
-    }
-    restricted_boltzmann_machine_train(
-      project_id,
-      parent_id,
-      block_id,
-      args = {}
-    ) {
-      // mandatory parameters
-      const functionCode = "DL_RBM_T";
-
-      // parameter validation
-      validateRequiredParameters(functionCode, args);
-
-      // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
-    }
-    restricted_boltzmann_machine_evaluate(
-      project_id,
-      parent_id,
-      block_id,
-      args = {}
-    ) {
-      // mandatory parameters
-      const functionCode = "DL_RBM_E";
-
-      // parameter validation
-      validateRequiredParameters(functionCode, args);
-
-      // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
-    }
-    restricted_boltzmann_machine_predict(
-      project_id,
-      parent_id,
-      block_id,
-      args = {}
-    ) {
-      // mandatory parameters
-      const functionCode = "DL_RBM_P";
+      const functionCode = "A_DL_SDR_T";
 
       // parameter validation
       validateRequiredParameters(functionCode, args);
@@ -239,4 +225,4 @@ const DeepLearning = (superclass) =>
     }
   };
 
-module.exports = DeepLearning;
+module.exports = AutomatedDeepLearning;
