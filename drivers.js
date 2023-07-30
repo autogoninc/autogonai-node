@@ -7,7 +7,7 @@ projectId = 41;
 parentId = 9;
 blockId = 10;
 
-dataInput = (await client.columns_astype(projectId, parentId, blockId, {
+columnsAstype = (await client.columns_astype(projectId, parentId, blockId, {
     astype: "int32",
     columns: [0, 5, 7]
 })).data;
