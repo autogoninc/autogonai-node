@@ -23,7 +23,7 @@ async function main() {
     console.log("Uploading dataset...");
 
     // upload dataset for use
-    object = (await client.upload("/Users/USER/Downloads/Salary_Data.csv")).data
+    object = (await client.upload("./Salary_Data.csv")).data
 
     // display
     console.log();
