@@ -10,6 +10,7 @@ const { validateRequiredParameters } = require("../helpers/validation");
  */
 const DataVisualization = (superclass) =>
   class extends superclass {
+    
     scatter_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_SCP";
@@ -25,6 +26,7 @@ const DataVisualization = (superclass) =>
         args,
       });
     }
+
     ordinary_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_ORD";
@@ -41,6 +43,7 @@ const DataVisualization = (superclass) =>
         args,
       });
     }
+
     compare_scatter_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_CSP";
@@ -57,6 +60,7 @@ const DataVisualization = (superclass) =>
         args,
       });
     }
+
     pie_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_PIE";
@@ -73,6 +77,7 @@ const DataVisualization = (superclass) =>
         args,
       });
     }
+
     heatmap_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_HMP";
@@ -89,6 +94,7 @@ const DataVisualization = (superclass) =>
         args,
       });
     }
+
   };
 
 module.exports = DataVisualization;
