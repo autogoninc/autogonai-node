@@ -10,6 +10,20 @@ const { validateRequiredParameters } = require("../helpers/validation");
  */
 const DataVisualization = (superclass) =>
   class extends superclass {
+    /**
+     * Scatter Plots
+     *
+     * This function creates scatter plots for pairs of columns in a given input dataset. Scatter plots are a useful visualization tool for examining the relationship between two variables.
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-visualization/scatter-plots-dp_scp}
+     *
+     * @returns {object} StateManagement Object
+     */
     scatter_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_SCP";
@@ -25,6 +39,21 @@ const DataVisualization = (superclass) =>
         args,
       });
     }
+    /**
+     * Ordinary Plots
+     *
+     * This function creates ordinary line plots for pairs of columns in a given input dataset.
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-visualization/ordinary-plots-dp_ord}
+     *
+     * @returns {object} StateManagement Object
+     */
+
     ordinary_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_ORD";
@@ -41,6 +70,21 @@ const DataVisualization = (superclass) =>
         args,
       });
     }
+    /**
+     * Compare Scatter Plots
+     *
+     * This function compares scatter plots for pairs of columns in a given input dataset.
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-visualization/ordinary-plots-dp_ord}
+     *
+     * @returns {object} StateManagement Object
+     */
+
     compare_scatter_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_CSP";
@@ -57,6 +101,21 @@ const DataVisualization = (superclass) =>
         args,
       });
     }
+    /**
+     * Pie Plots
+     *
+     * This function creates pie plots for a given input dataset.
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-visualization/pie-plots-dp_pie}
+     *
+     * @returns {object} StateManagement Object
+     */
+
     pie_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_PIE";
@@ -73,6 +132,20 @@ const DataVisualization = (superclass) =>
         args,
       });
     }
+    /**
+     * Heatmap Plots
+     *
+     * This function creates heatmap plots for a given input dataset.
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-visualization/heatmap-plots-dp_hmp}
+     *
+     * @returns {object} StateManagement Object
+     */
     heatmap_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_HMP";

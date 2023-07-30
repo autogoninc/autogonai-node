@@ -524,6 +524,20 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+    /**
+     * Dataset Datatypes
+     *
+     * This function shows dataset datatypes.
+     *
+     * @param {int} project_id current project's ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-processing/dataset-datatypes-dp_dty}
+     *
+     * @returns {object} StateManagement Object
+     */
     dataset_datatypes(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_DTY";
@@ -540,6 +554,20 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+    /**
+     * Dataset Uniques
+     *
+     * This function shows the number of unique data classes.
+     *
+     * @param {int} project_id current project's ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-processing/dataset-uniques-dp_unq}
+     *
+     * @returns {object} StateManagement Object
+     */
     dataset_uniques(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_UNQ";
@@ -556,6 +584,20 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+    /**
+     * Dataset Stats Counts
+     *
+     * This function shows the number of unique data classes within a specific column.
+     *
+     * @param {int} project_id current project's ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-processing/dataset-stats-counts-dp_stc}
+     *
+     * @returns {object} StateManagement Object
+     */
     dataset_stats_counts(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_STC";
@@ -572,6 +614,20 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+    /**
+     * Principal Component Analysis
+     *
+     * This function reduces the dimensionality using PCA.
+     *
+     * @param {int} project_id current project's ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-processing/principal-component-analysis-dp_pca}
+     *
+     * @returns {object} StateManagement Object
+     */
     principal_component_analysis(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_PCA";
@@ -588,16 +644,42 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
-
+    /**
+     * Automated Data Preprocessing
+     *
+     * This function automatically cleans and encodes supported data.
+     *
+     * @param {int} project_id current project's ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-processing/automated-data-processing-dp_adp}
+     *
+     * @returns {object} StateManagement Object
+     */
     automated_data_preprocessing(project_id, parent_id, block_id, args = {}) {
       // Automated Data Prepcoessing goes in here
 
       const functionCode = "DP_ADP";
     }
-
-    dataset_datatypes(project_id, parent_id, block_id, args = {}) {
+    /**
+     * Text Vectorizer
+     *
+     * Transform textual data into numerical representations that are compatible with machine learning models, enabling efficient processing of text-based tasks.
+     *
+     * @param {int} project_id current project's ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/data-processing/text-vectorizer-dp_vec}
+     *
+     * @returns {object} StateManagement Object
+     */
+    text_vectorizer(project_id, parent_id, block_id, args = {}) {
       // define function code
-      const functionCode = "DP_DTY";
+      const functionCode = "DP_VEC";
 
       // parameter validation
       validateRequiredParameters(functionCode, args);
