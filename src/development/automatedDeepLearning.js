@@ -10,6 +10,20 @@ const { validateRequiredParameters } = require("../helpers/validation");
  */
 const AutomatedDeepLearning = (superclass) =>
   class extends superclass {
+    /**
+     * Auto Image Classification
+     *
+     * This function creates an Automated Image classifying model.
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-image-classification-a_dl_imc}
+     *
+     * @returns {object} StateManagement Object
+     */
     auto_image_classifier_init(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_IMC_I";
@@ -26,6 +40,20 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+    /**
+     * Auto Image Classification
+     *
+     * This function creates an Automated Image classifying model.
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-image-classification-a_dl_imc}
+     *
+     * @returns {object} StateManagement Object
+     */
     auto_image_classifier_train(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_IMC_T";
@@ -42,6 +70,20 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+    /**
+     * Auto Image Regression
+     *
+     * This function creates an Automated Image regression model.
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-image-regression-a_dl_imr}
+     *
+     * @returns {object} StateManagement Object
+     */
     auto_image_regressor_init(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_IMR";
@@ -58,6 +100,20 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+    /**
+     * Auto Image Regression
+     *
+     * This function creates an Automated Image regression model.
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-image-regression-a_dl_imr}
+     *
+     * @returns {object} StateManagement Object
+     */
     auto_image_regressor_train(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_IMR_T";
@@ -74,6 +130,22 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+
+    /**
+     * Auto Text Classification
+     *
+     * This function creates an Automated Text classifying model
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-text-classification-a_dl_txc}
+     *
+     * @returns {object} StateManagement Object
+     */
+
     auto_text_classifier_init(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_TXC_I";
@@ -90,6 +162,21 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+    /**
+     * Auto Text Classification
+     *
+     * This function creates an Automated Text classifying model
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-text-classification-a_dl_txc}
+     *
+     * @returns {object} StateManagement Object
+     */
+
     auto_text_classifier_train(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_TXC_T";
@@ -106,6 +193,21 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+    /**
+     * Auto Text Regression
+     *
+     * This function creates an Automated Text regression model
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-text-regression-a_dl_txr}
+     *
+     * @returns {object} StateManagement Object
+     */
+
     auto_text_regressor_init(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_TXR_I";
@@ -122,6 +224,21 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+    /**
+     * Auto Text Regression
+     *
+     * This function creates an Automated Text regression model
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-text-regression-a_dl_txr}
+     *
+     * @returns {object} StateManagement Object
+     */
+
     auto_text_regressor_train(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "A_DL_TXR_T";
@@ -138,7 +255,20 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
-
+    /**
+     * Auto Structured Data Classification
+     *
+     * This function creates an Automated Structured Data classifying model
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-structured-data-classification-a_dl_sdc}
+     *
+     * @returns {object} StateManagement Object
+     */
     auto_structured_data_classifier_init(
       project_id,
       parent_id,
@@ -160,6 +290,20 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+    /**
+     * Auto Structured Data Classification
+     *
+     * This function creates an Automated Structured Data classifying model
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@link https://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-structured-data-classification-a_dl_sdc}
+     *
+     * @returns {object} StateManagement Object
+     */
     auto_structured_data_classifier_train(
       project_id,
       parent_id,
@@ -181,6 +325,20 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+    /**
+     * Auto Structured Data Regression
+     *
+     * This function creates an Automated Structured Data regression model
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@linkhttps://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-structured-data-regression-a_dl_sdr}
+     *
+     * @returns {object} StateManagement Object
+     */
     auto_structured_data_regressor_init(
       project_id,
       parent_id,
@@ -202,6 +360,20 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+    /**
+     * Auto Structured Data Regression
+     *
+     * This function creates an Automated Structured Data regression model
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@linkhttps://docs.autogon.ai/autogon-engine/automated-deep-learning/auto-structured-data-regression-a_dl_sdr}
+     *
+     * @returns {object} StateManagement Object
+     */
     auto_structured_data_regressor_train(
       project_id,
       parent_id,
