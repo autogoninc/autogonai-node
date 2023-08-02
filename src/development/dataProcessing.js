@@ -44,6 +44,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Missing Data
      *
@@ -74,6 +75,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Data Encoding
      *
@@ -104,6 +106,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Data Split
      *
@@ -134,6 +137,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Feature Scaling
      *
@@ -164,6 +168,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Drop Columns
      *
@@ -194,6 +199,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Time Stepper
      *
@@ -224,6 +230,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      *  Feature Sampling
      *
@@ -254,6 +261,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      *  Cast Columns
      *
@@ -268,9 +276,9 @@ const DataProcessing = (superclass) =>
      *
      * @returns {object} StateManagement Object
      */
-    cast_columns(project_id, parent_id, block_id, args = {}) {
+    columns_astype(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
-      const functionCode = "DP_CST";
+      const functionCode = "DP_ASP";
 
       // parameter validation
       validateRequiredParameters(functionCode, args);
@@ -284,6 +292,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      *  Reshape Array
      *
@@ -314,6 +323,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Column Astype
      *
@@ -344,6 +354,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Show Duplicates
      *
@@ -374,6 +385,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Drop Duplicates
      *
@@ -404,6 +416,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Scalar to Ndarray
      *
@@ -434,6 +447,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Dataset Info
      *
@@ -464,6 +478,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Dataset Correlations
      *
@@ -494,6 +509,7 @@ const DataProcessing = (superclass) =>
         args,
       });
     }
+
     /**
      * Dataset Description
      *
@@ -663,23 +679,10 @@ const DataProcessing = (superclass) =>
 
       const functionCode = "DP_ADP";
     }
-    /**
-     * Text Vectorizer
-     *
-     * Transform textual data into numerical representations that are compatible with machine learning models, enabling efficient processing of text-based tasks.
-     *
-     * @param {int} project_id current project's ID
-     * @param {int} parent_id previous block ID
-     * @param {int} block_id current block ID
-     * @param {object} args block arguments (refer to documentation)
-     *
-     * {@link https://docs.autogon.ai/autogon-engine/data-processing/text-vectorizer-dp_vec}
-     *
-     * @returns {object} StateManagement Object
-     */
-    text_vectorizer(project_id, parent_id, block_id, args = {}) {
+
+    dataset_datatypes(project_id, parent_id, block_id, args = {}) {
       // define function code
-      const functionCode = "DP_VEC";
+      const functionCode = "DP_DTY";
 
       // parameter validation
       validateRequiredParameters(functionCode, args);

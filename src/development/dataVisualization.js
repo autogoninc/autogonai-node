@@ -24,6 +24,7 @@ const DataVisualization = (superclass) =>
      *
      * @returns {object} StateManagement Object
      */
+
     scatter_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_SCP";
@@ -146,6 +147,7 @@ const DataVisualization = (superclass) =>
      *
      * @returns {object} StateManagement Object
      */
+
     heatmap_plots(project_id, parent_id, block_id, args = {}) {
       // mandatory parameters
       const functionCode = "DP_HMP";
