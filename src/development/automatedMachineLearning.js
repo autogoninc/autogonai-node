@@ -6,7 +6,7 @@ const { validateRequiredParameters } = require("../helpers/validation");
 const AutoMachineLearning = (superclass) =>
   class extends superclass {
     /**
-     * AutoRegression
+     * AutoMachineLearnin
      *
      * This function finds the K number of training examples closest (nearest neighbors) to the input data and then classifying the input data based on the majority class of its nearest neighbors.
      *
