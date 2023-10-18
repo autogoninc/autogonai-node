@@ -16,51 +16,50 @@ const { flowObjects } = require("./helpers/utils");
  * @module Client
  */
 class Client extends flowObjects(...Object.values(blocks))(API) {
+  /**
+   *
+   * @param {String} apiKey Authentication key (refer to documentation)
+   * {@link https://autogon-ai.gitbook.io/autogon-for-developers/autogon-engine/data-processing/data-input-dp_1}
+   *
+   * @param {object} options other parameters
+   */
+  constructor(apiKey, options = {}) {
+    // if baseURL is not provided, use default
+    options.baseURL ||= constants.BASE_URL;
 
-    /**
-     * 
-     * @param {String} apiKey Authentication key (refer to documentation)
-     * {@link https://autogon-ai.gitbook.io/autogon-for-developers/autogon-engine/data-processing/data-input-dp_1}
-     * 
-     * @param {object} options other parameters
-     */
-    constructor(apiKey, options = {}) {
-        // if baseURL is not provided, use default
-        options.baseURL ||= constants.BASE_URL;
+    // initialize `API` class
+    super({
+      apiKey: apiKey,
+      ...options,
+    });
+    this.apiKey = apiKey;
+    this.options = options;
 
-        // initialize `API` class
-        super({
-            apiKey: apiKey,
-            ...options
-        });
-        this.apiKey = apiKey;
-        this.options = options;
+    // initialze Other APIs
+    this.Dashboard = new modules.Dashboard(this);
+    this.Project = new modules.Project(this);
+    this.StateManagement = new modules.StateManagement(this);
+    this.Dataset = new modules.Dataset(this);
+  }
 
-        // initialze Other APIs
-        this.Dashboard = new modules.Dashboard(this)
-        this.Project = new modules.Project(this);
-        this.StateManagement = new modules.StateManagement(this);
-        this.Dataset = new modules.Dataset(this);
-    }
+  upload(filePath) {
+    const endpoint = "/engine/upload/";
 
-    upload(filePath) {
-        const endpoint = "/engine/upload/";
+    const form = new FormData();
+    form.append("file", fs.createReadStream(filePath));
 
-        const form = new FormData();
-        form.append("file", fs.createReadStream(filePath));
+    const headers = {
+      ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
 
-        const headers = {
-            ...form.getHeaders(),
-            ...{
-                "X-AUG-KEY": this.apiKey,
-                "User-Agent": `${constants.appName}/${constants.appVersion}`
-            }
-        }
-
-        return axios.post(this.options.baseURL + endpoint, form, {
-            headers
-        });
-    }
+    return axios.post(this.options.baseURL + endpoint, form, {
+      headers,
+    });
+  }
 }
 
 // export `Client` class.
