@@ -395,6 +395,62 @@ const AutomatedDeepLearning = (superclass) =>
         args,
       });
     }
+    /**
+     * General AutoDL Blocks
+     *
+     * This function loads and uses pre-trained AutoDL models to perform actions such as model evaluation and value prediction.
+     *
+     * @param {int} project_id current project ID
+     * @param {int} parent_id previous block ID
+     * @param {int} block_id current block ID
+     * @param {object} args block arguments (refer to documentation)
+     *
+     * {@linkhttps://docs.autogon.ai/autogon-engine-studio/automated-deep-learning/general-autodl-blocks-a_dl_all}
+     *
+     * @returns {object} StateManagement Object
+     */
+    automated_deep_learning_evaluate(
+      project_id,
+      parent_id,
+      block_id,
+      args = {}
+    ) {
+      // mandatory parameters
+      const functionCode = "A_DL_ALL_E";
+
+      // parameter validation
+      validateRequiredParameters(functionCode, args);
+
+      // send request
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      });
+    }
+    automated_deep_learning_predict(
+      project_id,
+      parent_id,
+      block_id,
+      args = {}
+    ) {
+      // mandatory parameters
+      const functionCode = "A_DL_ALL_P";
+
+      // parameter validation
+      validateRequiredParameters(functionCode, args);
+
+      // send request
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      });
+    }
   };
 
 module.exports = AutomatedDeepLearning;

@@ -56,9 +56,13 @@ class Client extends flowObjects(...Object.values(blocks))(API) {
       },
     };
 
-    return axios.post(this.options.baseURL + endpoint, form, {
-      headers,
-    });
+    return axios.post(
+      this.options.baseURL || constants.BASE_URL + endpoint,
+      form,
+      {
+        headers,
+      }
+    );
   }
 }
 
