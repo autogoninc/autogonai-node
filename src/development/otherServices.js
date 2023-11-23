@@ -380,6 +380,48 @@ const AIServices = (superclass) =>
         headers,
       });
     }
+
+     /**
+     * 
+     *This API allows seamless communication between a client application and a custom chatbot service agent, facilitating natural language processing and response generation.
+     * 
+     *
+     * @param {int} agent_id Agent ID(A Chatbot Agent ID is gotten from the Autogon console after a successful creation of a chatbot agent)
+     * @param {string}message message 
+     *
+     *
+     * {@link https://docs.autogon.ai/autogon-qore/natural-language-ai}
+     *
+     * @returns {object}
+     */
+    create_chatbot(agentId, message) {
+      const endpoint = `/services/chatbot/${agentId}/chat/`;
+      function uuid() {
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+          /[xy]/g,
+          function (c) {
+            var r = (Math.random() * 16) | 0,
+              v = c == "x" ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+          }
+        );
+      }
+      const sessionId = uuid();
+
+      const headers = {
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+        "Content-Type": "application/json",
+      };
+      const sessionIds = {
+        session_id: sessionId,
+      }
+      console.log(sessionId);
+      return axios.post(this.options.baseURL + endpoint, {
+        headers,
+        ...sessionIds,
+        question: message,
+      });
+    }
   };
 
 module.exports = AIServices;
