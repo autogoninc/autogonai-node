@@ -2,6 +2,12 @@
 
 const { isUUID } = require("../helpers/validation");
 
+const {
+  VisionAI,
+  NaturalLanguageAI,
+  VoiceCloning,
+} = require("../development/qore");
+
 class Dashboard {
   constructor(client) {
     this.client = client;
@@ -113,9 +119,18 @@ class Dataset {
   }
 }
 
+class Qore {
+  constructor(client) {
+    this.visionAI = new VisionAI(client);
+    this.naturalLanguageAI = new NaturalLanguageAI(client);
+    this.voiceCloning = new VoiceCloning(client);
+  }
+}
+
 module.exports = {
   Dashboard,
   Project,
   StateManagement,
   Dataset,
+  Qore,
 };

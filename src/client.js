@@ -40,6 +40,7 @@ class Client extends flowObjects(...Object.values(blocks))(API) {
     this.Project = new modules.Project(this);
     this.StateManagement = new modules.StateManagement(this);
     this.Dataset = new modules.Dataset(this);
+    this.Qore = new modules.Qore(this);
   }
 
   upload(filePath) {

@@ -1,29 +1,20 @@
 const dotenv = require("dotenv");
+const fs = require("fs");
 dotenv.config();
 require("dotenv").config();
 
 const Client = require("../src/client");
 
-console.log(process.env.AUTOGON_API_KEY);
 const client = new Client(process.env.AUTOGON_API_KEY);
+
 async function main() {
-  // const textDetection = (await client.text_detection("qore2.PNG")).data;
-  // console.log(textDetection);
-
-  //-------------------
-  //Natural Language AI
-  //--------------------
-
-  const textToSpeech = (
-    await client.text_to_speech(
-      "A dad and his son walking down the street towards a park"
-    )
-  ).data;
-  console.log(textToSpeech);
-
-  // // speech to text accept the sound voice recognition
-  // speechToText = (await client.speech_to_text("speechTest.wav")).data;
-  // // console.log(speechToText.data.results[0].alternatives[0].transcript);
+  // logoDetection = (
+  //   await client.Qore.visionAI.logo_detection("images/download3.png")
+  // ).data;
+  // console.log(logoDetection);
+  // //-------------------
+  // //Natural Language AI
+  // //--------------------
 
   // // text summary
   // textSummary = (
@@ -46,21 +37,26 @@ async function main() {
   // // console.log(documentTextDetection);
 
   // //  Label Detection
-  // labelDetection = (await client.label_detection("images1.jpeg")).data;
+  // labelDetection = (await client.label_detection("images/images1.jpeg")).data;
   // // console.log(labelDetection);
 
   // // detect pupolar logo
-  // logoDetection = (await client.logo_detection("download3.png")).data;
+  // logoDetection = (await client.logo_detection("images/download3.png")).data;
   // // console.log(logoDetection.data);
 
-  // imageGeneration = await client.image_generation("tree that have leave");
-  // const test = [
-  //   "https://cloud-autogonai.s3.us-east-2.amazonaws.com/2023_GPT4All_Technical_Report.pdf",
-  //   "https://cloud-autogonai.s3.us-east-2.amazonaws.com/yolov7paper.pdf",
-  // ];
-  // chatbot = await client.create_chatbot("chatbot", "testing", test);
-  // console.log(chatbot);
+  imageGeneration = await client.image_generation(
+    "A dad and his son walking down the street towards a park",
+    "1024x1024"
+  );
+  const imageData = Buffer.from(imageGeneration.image, "base64");
 
-  // console.log(imageGeneration);
+  fs.writeFile("generated_image.png", imageData, "base64", (err) => {
+    if (err) {
+      console.error("Error saving image:", err);
+    } else {
+      console.log("Image saved successfully as generated_image.png");
+    }
+  });
+  // // console.log(imageGeneration);
 }
 main();
