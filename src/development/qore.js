@@ -282,13 +282,12 @@ class VisionAI {
     };
     // // let response;
     return axios
-      .post(constants.BASE_URL + endpoint, {
+      .post(constants.BASE_URL + endpoint,body,{
         headers,
-        body,
       })
       .then((response) => {
         return {
-          ...response.data,
+          ...response,
         };
       });
 
@@ -313,10 +312,6 @@ class VisionAI {
   stable_diffusion(text) {
     const endpoint = "/services/vision-ai/";
 
-    //   const form = new FormData();
-    //   form.append("image", fs.createReadStream(imagePath));
-    //   form.append("operation", "object_localization");
-
     const headers = {
       // ...form.getHeaders(),
       ...{
@@ -324,10 +319,11 @@ class VisionAI {
         "User-Agent": `${constants.appName}/${constants.appVersion}`,
       },
     };
-
-    return axios.post(constants.BASE_URL + endpoint, form, {
+    const body = {
+      "text":text
+    }
+    return axios.post(constants.BASE_URL + endpoint, body , {
       headers,
-      text,
     });
   }
 
