@@ -446,6 +446,7 @@ class NaturalLanguageAI {
     this.apiKey = client.apiKey;
     this.client = client;
   }
+
   /**
    *
    * Sentiment Analyzer
@@ -471,7 +472,7 @@ class NaturalLanguageAI {
       },
     };
 
-    return axios.post(this.options.baseURL + endpoint, form, {
+    return axios.post(constants.BASE_URL + endpoint, form, {
       headers,
       text,
     });
@@ -508,7 +509,7 @@ class NaturalLanguageAI {
       },
     };
 
-    return axios.post(this.options.baseURL + endpoint, form, {
+    return axios.post(constants.BASE_URL + endpoint, form, {
       headers,
     });
   }
@@ -530,7 +531,7 @@ class NaturalLanguageAI {
    */
 
   ask_your_data(data, prompt) {
-    const endpoint = "/services/generate-data/";
+    const endpoint = "/services/ask-your-data/";
 
     const form = new FormData();
     const headers = {
@@ -540,11 +541,12 @@ class NaturalLanguageAI {
         "User-Agent": `${constants.appName}/${constants.appVersion}`,
       },
     };
-
-    return axios.post(this.options.baseURL + endpoint, form, {
+const dataInput ={
+  "data": data,
+  "prompt": prompt,
+}
+    return axios.post(constants.BASE_URL + endpoint, dataInput, {
       headers,
-      data: data,
-      prompt: prompt,
     });
   }
 
@@ -561,7 +563,7 @@ class NaturalLanguageAI {
    * @returns {object}
    */
   text_classification(text) {
-    const endpoint = "/services/generate-data/";
+    const endpoint = "/services/text-classification/";
 
     const form = new FormData();
     const headers = {
@@ -572,9 +574,10 @@ class NaturalLanguageAI {
       },
     };
 
-    return axios.post(this.options.baseURL + endpoint, form, {
+    return axios.post(constants.BASE_URL + endpoint,{
+      "text": text,
+    }, {
       headers,
-      text: text,
     });
   }
 
@@ -603,10 +606,13 @@ class NaturalLanguageAI {
       },
     };
 
-    return axios.post(this.options.baseURL + endpoint, form, {
+    const data = {
+      "prompt": prompt,
+      "row": row,
+    }
+    return axios.post(constants.BASE_URL + endpoint,data, {
       headers,
-      prompt: prompt,
-      row: row,
+      
     });
   }
 
@@ -645,12 +651,186 @@ class NaturalLanguageAI {
       session_id: sessionId,
     };
     console.log(sessionId);
-    return axios.post(this.options.baseURL + endpoint, {
+    return axios.post(constants.BASE_URL + endpoint, {
       headers,
       ...sessionIds,
       question: question,
     });
   }
+
+  /**
+  * The easy_maker method is used to generate easy markers for a given question.
+  *
+  * @param {string} question - The question to generate easy markers for.
+  * @param {string} easy - 
+  * @param {string|null} answer - The answer to the question, if known. Defaults to null.
+  * @param {number|null} word_length - The desired word length for the markers, if applicable. Defaults to null.
+  *
+  * @returns {object} - The response object from the API call.
+  *
+  * @link {@link https://docs.autogon.ai/autogon-qore/natural-language-ai/easy-marker}
+  */
+  easy_maker(easy, question, answer = null, word_length = 30) {
+    const endpoint = "/services/essay-marker/";
+
+    const form = new FormData();
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+
+    const data = {
+      "easy": easy,
+      "question": question,
+      "answer": answer,
+      "word_length": word_length
+    }
+    return axios.post(constants.BASE_URL + endpoint, data, {
+      headers,
+    });
+  }
+
+  /**
+ * The job_description_analyzer method analyzes a job description and a resume URL.
+ *
+ * @param {string} job_description - The job description to be analyzed.
+ * @param {string} resume_url - The URL of the resume to be analyzed.
+ *
+ * @returns {object} - The response object from the API call.
+ *
+ * @link {@link https://docs.autogon.ai/autogon-qore/natural-language-ai/easy-marker}
+ */
+  job_description_analyzer(job_description, resume_url) {
+    const endpoint = "/services/rank-resume/";
+
+    const form = new FormData();
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+
+    const data = {
+      "job_description": job_description,
+      "resume_url": resume_url
+    }
+    return axios.post(constants.BASE_URL + endpoint, data, {
+      headers,
+    })
+  }
+  /**
+   * Analyzes employee survey data.
+   * @param {Array} survey - An array of objects representing survey questions and answers.
+   * Example:
+   * [
+   *    {
+   *      "question": "What is your role?",
+   *      "answer": "Software Engineer"
+   *    },
+   *    {
+   *      "question": "How satisfied are you with your work environment?",
+   *      "answer": "Very satisfied"
+   *    }
+   * ]
+   * @returns {Promise} - A promise representing the result of the analysis.
+   */
+  employee_analyzer(survey) {
+    const endpoint = "/services/employee-analysis/";
+
+    const headers = {
+      "X-AUG-KEY": this.apiKey,
+      "User-Agent": `${constants.appName}/${constants.appVersion}`,
+    };
+    const data ={
+      "question_answers": survey,
+    }
+    console.log(data);
+
+    return axios.post(constants.BASE_URL + endpoint,data,{
+    headers: headers,
+    });
+  }
+
+
+  /**
+ * The generate_dataset method generates a dataset based on the provided prompt and number of rows.
+ *
+ * @param {string} prompt - The prompt specifying the structure and characteristics of the dataset.
+ * @param {number} [row=100] - The number of rows needed in the generated dataset. Defaults to 100.
+ *
+ * @returns {object} - The response object from the API call.
+ *
+ * @link {@link https://docs.autogon.ai/autogon-qore/natural-language-ai}
+ */
+  generate_dataset(prompt, row = 100) {
+    const endpoint = "/services/generate-data/";
+    console.log(this.apiKey);
+
+    const form = new FormData();
+    const headers = {
+      ...form.getHeaders(),
+      ...{
+        "X-AUG-Key": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+
+    const data = {
+      "prompt": prompt,
+      "rows": row
+    }
+    return axios.post(constants.BASE_URL + endpoint, data, {
+      headers,
+
+    })
+  }
+  /**
+ * The translate_text method translates the given text to the target language.
+ *
+ * @param {string} text - The text to be translated.
+ * @param {string} target_language - The target language to translate the text into.
+ * @param {string} [source_language=null] - The source language of the text. Defaults to null.
+ *
+ * @returns {object} - The response object from the API call.
+ *
+ * @link {@link https://docs.autogon.ai/autogon-qore/natural-language-ai/text-translation}
+ */
+  translate_text(text, target_language, source_language = null) {
+    const endpoint = "/services/text-translation/";
+
+    const form = new FormData();
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    let data;
+    if (!source_language) {
+      data = {
+        "text": text,
+        "target_language": target_language,
+      }
+    } else {
+      data = {
+        "text": text,
+        "target_language": target_language,
+      }
+    }
+
+
+    return axios.post(constants.BASE_URL + endpoint, data, {
+      headers,
+    })
+  }
+
+
 }
 class VoiceCloning {
   constructor(client) {
@@ -686,7 +866,7 @@ class VoiceCloning {
       },
     };
 
-    return axios.post(this.options.baseURL + endpoint, form, {
+    return axios.post(constants.BASE_URL + endpoint, form, {
       headers,
       voice_name: voiceName,
       voice_dscription: voiceDscription,
@@ -718,7 +898,7 @@ class VoiceCloning {
       },
     };
 
-    return axios.get(this.options.baseURL + endpoint, form, {
+    return axios.get(constants.BASE_URL + endpoint, form, {
       headers,
     });
   }
@@ -750,11 +930,14 @@ class VoiceCloning {
       },
     };
 
-    return axios.post(this.options.baseURL + endpoint, form, {
+    return axios.post(constants.BASE_URL + endpoint, form, {
       headers,
     });
   }
 }
+
+class Agriculture { }
+class Medical { }
 
 module.exports = {
   VisionAI,

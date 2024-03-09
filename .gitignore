@@ -1,9 +1,4 @@
+examples
 .env
-main.js
 node_modules
-drivers.js
-DefaultLoan.csv
-download.png
-chatbotTest.js
-
-index.html
+./examples
