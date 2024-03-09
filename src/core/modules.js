@@ -1,119 +1,136 @@
 "use strict";
 
-const { isUUID } = require("../helpers/validation")
+const { isUUID } = require("../helpers/validation");
+
+const {
+  VisionAI,
+  NaturalLanguageAI,
+  VoiceCloning,
+} = require("../development/qore");
 
 class Dashboard {
-    constructor(client) {
-        this.client = client;
-        this.endpoint = "/engine/dashboard/"
-    }
+  constructor(client) {
+    this.client = client;
+    this.endpoint = "/engine/dashboard/";
+  }
 
-    get() {
-        return this.client.sendRequest(
-            "GET",
-            this.endpoint
-        );
-    }
+  get() {
+    return this.client.sendRequest("GET", this.endpoint);
+  }
 }
 
 class Project {
-    constructor(client) {
-        this.endpoint = "/engine/project/"
-        this.client = client;
+  constructor(client) {
+    this.endpoint = "/engine/project/";
+    this.client = client;
+  }
+
+  get(app_id) {
+    if (app_id && isUUID(app_id)) {
+      this.endpoint = `${this.endpoint}${app_id}`;
     }
 
-    get(app_id = null) {
+    return this.client.sendRequest("GET", this.endpoint);
+  }
 
-        if (app_id && isUUID(app_id)) {
-            this.endpoint = `${this.endpoint}${app_id}`;
-        }
+  create(project_name, project_description) {
+    return this.client.sendRequest("POST", this.endpoint, {
+      project_name,
+      project_description,
+    });
+  }
 
-        return this.client.sendRequest(
-            "GET",
-            this.endpoint
-        );
+  delete(app_id) {
+    if (isUUID(app_id)) {
+      this.endpoint += app_id;
+    } else {
+      return "Incorrect UUID";
     }
 
-    create(project_name, project_description) {
-        return this.client.sendRequest(
-            "POST",
-            this.endpoint, {
-            project_name,
-            project_description
-        });
-    }
-
-    delete(app_id) {
-        if (isUUID(app_id)) {
-            this.endpoint += app_id;
-        } else {
-            return "Incorrect UUID";
-        }
-
-        return this.client.sendRequest(
-            "DELETE",
-            this.endpoint
-        );
-    }
+    return this.client.sendRequest("DELETE", this.endpoint);
+  }
 }
 
-
 class StateManagement {
-    constructor(client) {
-        this.client = client;
-        this.endpoint = "/engine/statemanagement"
+  constructor(client) {
+    this.client = client;
+    this.endpoint = "/engine/statemanagement/";
+  }
+
+  get(app_id) {
+    if (app_id && isUUID(app_id)) {
+      this.endpoint = `${this.endpoint}/${app_id}/`;
     }
 
-    get(project_id, block_id) {
+    return this.client.sendRequest("GET", this.endpoint);
+  }
 
-        this.endpoint = `${this.endpoint}/${block_id}/?project=${project_id}`;
+  delete(id) {
+    this.endpoint = `${this.endpoint}/${id}/`;
 
-        return this.client.sendRequest(
-            "GET",
-            this.endpoint
-        )
-    }
+    return this.client.sendRequest("DELETE", this.endpoint);
+  }
 }
 
 class Dataset {
-    constructor(client) {
-        this.client = client;
-        this.endpoint = "/engine/datasets/"
+  constructor(client) {
+    this.client = client;
+    this.endpoint = "/engine/datasets/";
+  }
+
+  get(id = null) {
+    if (id) {
+      this.endpoint = `${this.endpoint}/${id}`;
     }
 
-    get(id = null) {
+    return this.client.sendRequest("GET", this.endpoint);
+  }
 
-        if (id) {
-            this.endpoint = `${this.endpoint}/${id}`;
-        }
+  create(dataset_name, dataset_description, dataset_type, dataset_url) {
+    dataset_type = dataset_type.toLowerCase();
 
-        return this.client.sendRequest(
-            "GET",
-            this.endpoint
-        );
+    // if (dataset_type !== "csv" || dataset_type !== "json") {
+    //     return "Unsupported file type";
+    // }
+
+    return this.client.sendRequest("POST", this.endpoint, {
+      dataset_name,
+      dataset_description,
+      dataset_type,
+      dataset_url,
+    });
+  }
+
+  update(id, dataset_name, dataset_description) {
+    if (id) {
+      this.endpoint = `${this.endpoint}/${id}`;
     }
-
-    create(dataset_name, dataset_description, dataset_type, dataset_url) {
-        dataset_type = dataset_type.toLowerCase();
-
-        // if (dataset_type !== "csv" || dataset_type !== "json") {
-        //     return "Unsupported file type";
-        // }
-
-        return this.client.sendRequest(
-            "POST",
-            this.endpoint, {
-            dataset_name,
-            dataset_description,
-            dataset_type,
-            dataset_url
-        });
+    const body = {
+      dataset_name: dataset_name,
+      dataset_description: dataset_description,
+    };
+    return this.client.sendRequest("UPDATE", this.endpoint, body);
+  }
+  delete(id) {
+    if (id) {
+      this.endpoint = `${this.endpoint}/${id}`;
     }
+    return this.client.sendRequest("DELETE", this.endpoint);
+  }
+}
+
+class Qore {
+  constructor(client) {
+    this.visionAI = new VisionAI(client);
+    this.naturalLanguageAI = new NaturalLanguageAI(client);
+    this.voiceCloning = new VoiceCloning(client);
+  }
 }
 
 module.exports = {
-    Dashboard,
-    Project,
-    StateManagement,
-    Dataset
+  Dashboard,
+  Project,
+  StateManagement,
+  Dataset,
+  Qore,
 };

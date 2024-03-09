@@ -1,14 +1,14 @@
 const packageJson = require("../../package.json");
 
-const appName = `${packageJson.name}-node`;
+const appName = `${packageJson.name}`;
 const appVersion = packageJson.version;
 
 const BASE_URL = "http://api.autogon.ai/api/v1";
 const ENGINE_ENDPOINT = "/engine/start";
 
 module.exports = {
-    BASE_URL,
-    appName,
-    appVersion,
-    ENGINE_ENDPOINT
+  BASE_URL,
+  appName,
+  appVersion,
+  ENGINE_ENDPOINT,
 };
