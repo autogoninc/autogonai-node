@@ -1,12 +1,8 @@
 # AutogonAI Node.js library
 
-This is a lightweight library that works as a connector to [Binance Public API](https://autogonai/gitbook.com). It's designed to be simple, clean and easy to use with minimal dependencies. 
+The AutogonAI Node.js library is a tool for interacting with AutogonAI's AI automation platform. It enables you to build and manage machine learning projects using a variety of functions and APIs provided by AutogonAI. With this library, you can streamline your machine learning workflow and take advantage of AutogonAI's automation capabilities.
 
-- Supported APIs:
- - `/api/v1/*`
-- Customizable base URL.
-- Supports request timeout and HTTP proxy.
-- Response metadata can be displayed.
+
 
 ## Installation
 ```bash
