@@ -2,3 +2,4 @@ examples
 .env
 node_modules
 ./examples
+test.js

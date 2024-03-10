@@ -1,21 +1,55 @@
 # AutogonAI Node.js library
 
-This is a lightweight library that works as a connector to [Binance Public API](https://autogonai/gitbook.com). It's designed to be simple, clean and easy to use with minimal dependencies. 
+The AutogonAI Node.js library is a tool for interacting with AutogonAI's AI automation platform. It enables you to build and manage machine learning projects using a variety of functions and APIs provided by AutogonAI. With this library, you can streamline your machine learning workflow and take advantage of AutogonAI's automation capabilities.
 
-- Supported APIs:
- - `/api/v1/*`
-- Customizable base URL.
-- Supports request timeout and HTTP proxy.
-- Response metadata can be displayed.
+
 
 ## Installation
 ```bash
 npm install autogonai-node
 ```
+## Documentation
+
+For detailed information and API documentation, please visit the [Documentation](https://docs.autogon.ai/).
 
 # Usage
 ```bash
-console.log("Hello World!");
+const fs = require("fs");
+require("dotenv").config();
+
+const Client = require("autogonai-node");
+
+// Initialize the client with your AutogonAI API key
+const client = new Client(process.env.AUTOGON_API_KEY);
+
+// Make a request to generate an image from input text and specify image size
+async function main() {
+  try {
+    // Input text to describe the image
+    const inputText = "A dad and his son walking down the street towards a park";
+
+    // Specify the image size (e.g., "1024x1024")
+    const imageSize = "1024x1024";
+
+    // Call the image_generation function
+    const response = await client.Qore.visionAI.image_generation(inputText, imageSize);
+
+    // Decode the image data and save it as a PNG file
+    const imageData = Buffer.from(response.data.image, "base64");
+    fs.writeFile("generated_image.png", imageData, "base64", (err) => {
+      if (err) {
+        console.error("Error saving image:", err);
+      } else {
+        console.log("Image saved successfully as generated_image.png");
+      }
+    });
+  } catch (error) {
+    console.error("Error generating image:", error);
+  }
+}
+
+// Call the main function
+main();
 ```
 
 ## License
