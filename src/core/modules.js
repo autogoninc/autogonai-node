@@ -6,6 +6,8 @@ const {
   VisionAI,
   NaturalLanguageAI,
   VoiceCloning,
+  Medical,
+  Agriculture
 } = require("../development/qore");
 
 class Dashboard {
@@ -124,6 +126,8 @@ class Qore {
     this.visionAI = new VisionAI(client);
     this.naturalLanguageAI = new NaturalLanguageAI(client);
     this.voiceCloning = new VoiceCloning(client);
+    this.medical = new Medical(client)
+    this.agriculture = new  Agriculture(client)
   }
 }
 

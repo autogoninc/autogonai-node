@@ -932,11 +932,353 @@ class VoiceCloning {
   }
 }
 
-class Agriculture { }
-class Medical { }
+class Agriculture { 
+  constructor(client) {
+    this.apiKey = client.apiKey;
+    this.client = client;
+  }
+  /**
+ * Performs ripe strawberry detection on the given image URLs.
+ * 
+ * @param {Array} image_urls - An array of image URLs to perform detection on.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected strawberries.
+ * @returns {Promise} - A promise that resolves to the detection results.
+ */
+  ripe_strawberry_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/agro-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "ripe_strawberry_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+  /**
+ * Performs crop weed detection on the given image URLs.
+ * 
+ * @param {Array} image_urls - An array of image URLs to perform detection on.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected weeds.
+ * @returns {Promise} - A promise that resolves to the detection results.
+ */
+  crop_weed_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/agro-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "crop_weed_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+  /**
+ * Performs palm tree health detection on the given image URLs.
+ * 
+ * @param {Array} image_urls - An array of image URLs to perform detection on.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected palm tree health.
+ * @returns {Promise} - A promise that resolves to the detection results.
+ */
+  palm_tree_health_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/agro-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "palm_tree_health_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+  /**
+ * Performs cashew disease detection on the given image URLs.
+ * 
+ * @param {Array} image_urls - An array of image URLs to perform detection on.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected cashew diseases.
+ * @returns {Promise} - A promise that resolves to the detection results.
+ */
+  cashew_disease_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/agro-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "cashew_disease_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+  /**
+ * Performs apple disease detection on the given image URLs.
+ * 
+ * @param {Array} image_urls - An array of image URLs to perform detection on.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected apple diseases.
+ * @returns {Promise} - A promise that resolves to the detection results.
+ */
+  apple_disease_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/agro-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "apple_disease_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+  /**
+ * Performs grape detection on the given image URLs.
+ * 
+ * @param {Array} image_urls - An array of image URLs to perform detection on.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected grapes.
+ * @returns {Promise} - A promise that resolves to the detection results.
+ */
+  grape_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/agro-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "grape_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+}
+class Medical { 
+  constructor(client) {
+    this.apiKey = client.apiKey;
+    this.client = client;
+  }
+
+/**
+ * Perform surgical tools detection on a set of images.
+ *
+ * @param {Array} image_urls - The URLs of the images to be analyzed.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected tools.
+ * @returns {Promise} - A promise that resolves to the response of the API call.
+ */
+  surgical_tools_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/health-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "surgical_tools_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+
+  /**
+ * Perform tuberculosis detection on a set of images.
+ *
+ * @param {Array} image_urls - The URLs of the images to be analyzed.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected tuberculosis.
+ * @returns {Promise} - A promise that resolves to the response of the API call.
+ */
+  tuberculosis_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/health-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "tuberculosis_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+
+  /**
+ * Perform cervical fracture detection on a set of images.
+ *
+ * @param {Array} image_urls - The URLs of the images to be analyzed.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected fractures.
+ * @returns {Promise} - A promise that resolves to the response of the API call.
+ */
+  cervical_fracture_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/health-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "cervical_fracture_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+
+  /**
+ * Perform chest x-ray detection on a set of images.
+ *
+ * @param {Array} image_urls - The URLs of the images to be analyzed.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected abnormalities.
+ * @returns {Promise} - A promise that resolves to the response of the API call.
+ */
+  chest_xray_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/health-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "chest_xray_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+
+  /**
+ * Perform head CT scan analysis on a set of images.
+ *
+ * @param {Array} image_urls - The URLs of the images to be analyzed.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected abnormalities.
+ * @returns {Promise} - A promise that resolves to the response of the API call.
+ */
+  kidney_stone_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/health-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "kidney_stone_detection",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+
+  /**
+ * Perform head CT scan analysis on a set of images.
+ *
+ * @param {Array} image_urls - The URLs of the images to be analyzed.
+ * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
+ * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected abnormalities.
+ * @returns {Promise} - A promise that resolves to the response of the API call.
+ */
+  head_ct_scan_analyzer(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+    const endpoint ="/services/health-studies/"
+    const headers = {
+      // ...form.getHeaders(),
+      ...{
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+      },
+    };
+    const body = {
+      "study_type": "head_ct_scan_analyzer",
+      "image_urls": image_urls,
+      "overlap_threshold": overlap_threshold,
+      "confidence_threshold": confidence_threshold
+  }
+  return axios.post(constants.BASE_URL + endpoint, body, {
+    headers,
+  })
+  }
+}
 
 module.exports = {
   VisionAI,
   NaturalLanguageAI,
   VoiceCloning,
+  Medical,
+  Agriculture
 };

@@ -6,5 +6,4 @@ module.exports.DeepLearning = require("./deepLearning");
 module.exports.AutomatedDeepLearning = require("./automatedDeepLearning");
 module.exports.AutoMachineLearning = require("./automatedMachineLearning");
 module.exports.DataVisualization = require("./dataVisualization");
-module.exports.AIServices = require("./otherServices");
 
