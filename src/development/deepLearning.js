@@ -2,7 +2,7 @@
 
 const constants = require("../helpers/constants");
 const { validateRequiredParameters } = require("../helpers/validation");
-
+const {handleRequestError} = require("../helpers/utils");
 /**
  * Deep Learning endpoints
  * @module DeepLearning
@@ -10,6 +10,17 @@ const { validateRequiredParameters } = require("../helpers/validation");
  */
 const DeepLearning = (superclass) =>
   class extends superclass {
+
+    deepLearningAPI(project_id,parent_id, block_id,functionCode,args){
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      }).then((res)=>res.data).catch(handleRequestError);
+    }
+
     /**
      * Artificial Neural Network
      *
@@ -33,13 +44,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args,);
     }
     /**
      * Artificial Neural Network
@@ -69,13 +74,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args,);;
     }
     /**
      * Artificial Neural Network
@@ -105,13 +104,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args,);;
     }
     /**
      * Artificial Neural Network
@@ -141,13 +134,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args,);
     }
     /**
      * Self Organizing Maps
@@ -172,13 +159,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args,);
     }
     /**
      * Self Organizing Maps
@@ -203,13 +184,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args,);;
     }
     /**
      * Self Organizing Maps
@@ -234,13 +209,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args,);;
     }
     /**
      * Self Organizing Maps
@@ -265,13 +234,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args,);;
     }
     /**
      * Restricted Boltzmann Machine
@@ -301,13 +264,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Restricted Boltzmann Machine
@@ -337,13 +294,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Restricted Boltzmann Machine
@@ -373,13 +324,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args);;
     }
     /**
      * Restricted Boltzmann Machine
@@ -409,13 +354,7 @@ const DeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.deepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
   };
 

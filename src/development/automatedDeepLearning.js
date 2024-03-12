@@ -1,6 +1,7 @@
 "use strict";
 
 const constants = require("../helpers/constants");
+const { handleRequestError } = require("../helpers/utils");
 const { validateRequiredParameters } = require("../helpers/validation");
 
 /**
@@ -10,6 +11,28 @@ const { validateRequiredParameters } = require("../helpers/validation");
  */
 const AutomatedDeepLearning = (superclass) =>
   class extends superclass {
+    /**
+ * automatedDeepLearningAPI
+ *
+ * This method sends a request to the AutoGon engine to perform automated machine learning tasks.
+ *
+ * @param {int} project_id - The current project ID.
+ * @param {int} parent_id - The previous block ID.
+ * @param {int} block_id - The current block ID.
+ * @param {string} functionCode - The function code for the specific task.
+ * @param {object} args - The block arguments (refer to documentation).
+ *
+ * @returns {object} - The StateManagement Object.
+ */
+    automatedDeepLearningAPI(project_id,parent_id, block_id,functionCode,args){
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      }).then((res)=>res.data).catch(handleRequestError);
+    }
     /**
      * Auto Image Classification
      *
@@ -32,13 +55,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Auto Image Classification
@@ -62,13 +79,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Auto Image Regression
@@ -92,13 +103,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Auto Image Regression
@@ -122,13 +127,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -154,13 +153,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Auto Text Classification
@@ -185,13 +178,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Auto Text Regression
@@ -216,13 +203,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Auto Text Regression
@@ -247,13 +228,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Auto Structured Data Classification
@@ -282,13 +257,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Auto Structured Data Classification
@@ -317,13 +286,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Auto Structured Data Regression
@@ -352,13 +315,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Auto Structured Data Regression
@@ -387,13 +344,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * General AutoDL Blocks
@@ -422,13 +373,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     automated_deep_learning_predict(
       project_id,
@@ -443,13 +388,7 @@ const AutomatedDeepLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.automatedDeepLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
   };
 

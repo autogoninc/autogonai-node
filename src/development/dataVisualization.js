@@ -1,6 +1,7 @@
 "use strict";
 
 const constants = require("../helpers/constants");
+const { handleRequestError } = require("../helpers/utils");
 const { validateRequiredParameters } = require("../helpers/validation");
 
 /**
@@ -10,6 +11,15 @@ const { validateRequiredParameters } = require("../helpers/validation");
  */
 const DataVisualization = (superclass) =>
   class extends superclass {
+    dataVisualizationAPI(project_id,parent_id, block_id,functionCode,args){
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      }).then((res)=>res.data).catch(handleRequestError);
+    }
     /**
      * Scatter Plots
      *
@@ -32,13 +42,7 @@ const DataVisualization = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataVisualizationAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Ordinary Plots
@@ -63,13 +67,7 @@ const DataVisualization = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataVisualizationAPI(project_id,parent_id,block_id,functionCode,args);;
     }
     /**
      * Compare Scatter Plots
@@ -94,13 +92,7 @@ const DataVisualization = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataVisualizationAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Pie Plots
@@ -125,13 +117,7 @@ const DataVisualization = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataVisualizationAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Heatmap Plots
@@ -156,13 +142,7 @@ const DataVisualization = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataVisualizationAPI(project_id,parent_id,block_id,functionCode,args);
     }
   };
 

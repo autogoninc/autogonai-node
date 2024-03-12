@@ -8,6 +8,11 @@ The AutogonAI Node.js library is a tool for interacting with AutogonAI's AI auto
 ```bash
 npm install autogonai-node
 ```
+
+```bash
+npm install axios
+```
+
 ## Documentation
 
 For detailed information and API documentation, please visit the [Documentation](https://docs.autogon.ai/).

@@ -10,7 +10,7 @@ const blocks = require("./development");
 const constants = require("./helpers/constants");
 const modules = require("./core/modules"); // other APIS
 
-const { flowObjects } = require("./helpers/utils");
+const { flowObjects, handleRequestError } = require("./helpers/utils");
 
 /**
  * @module Client
@@ -63,7 +63,7 @@ class Client extends flowObjects(...Object.values(blocks))(API) {
       {
         headers,
       }
-    );
+    ).then((res)=>res.data).catch(handleRequestError);
   }
 }
 

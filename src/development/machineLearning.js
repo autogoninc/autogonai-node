@@ -1,6 +1,7 @@
 "use strict";
 
 const constants = require("../helpers/constants");
+const {handleRequestError} = require("../helpers/utils");
 const { validateRequiredParameters } = require("../helpers/validation");
 
 /**
@@ -10,6 +11,16 @@ const { validateRequiredParameters } = require("../helpers/validation");
  */
 const MachineLearning = (superclass) =>
   class extends superclass {
+
+    machineLearningAPI(project_id,parent_id, block_id,functionCode,args){
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      }).then((res)=>res.data).catch(handleRequestError);
+    }
     /**
      * Simple Linear Regression
      *
@@ -32,13 +43,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args);
     };
     /**
      * Simple Linear Regression Predict
@@ -67,13 +72,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      * Multiple Linear Regression
@@ -102,13 +101,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      * Multiple Linear Regression Predict
@@ -137,13 +130,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Polynomial Linear Regression
@@ -172,13 +159,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Polynomial Linear Regression Predict
@@ -207,13 +188,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args);
     };
     /**
      *  Support Vector Regression
@@ -242,13 +217,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Support Vector Regression Predict
@@ -277,13 +246,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Decision Tree Regression
@@ -307,13 +270,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Decision Tree Regression Predict
@@ -342,13 +299,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Random Forest Regression
@@ -372,13 +323,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
 
     /**
@@ -409,13 +354,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
 
     /// END OF REGRESSION
@@ -443,13 +382,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
 
     /**
@@ -480,15 +413,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id: project_id,
-        parent_id,
-        parent_id,
-        block_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
 
     /**
@@ -519,13 +444,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  K_Nearest Neighbors
@@ -550,13 +469,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  K_Nearest Neighbors Predict
@@ -586,13 +499,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  K_Nearest Neighbors Metrics
@@ -622,13 +529,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Support Vector Machine
@@ -653,13 +554,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Support Vector Machine Predict
@@ -688,13 +583,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Support Vector Machine Metrics
@@ -723,13 +612,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
 
     /**
@@ -754,13 +637,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Kernel SVM Predict
@@ -784,13 +661,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Kernel SVM Metrics
@@ -814,13 +685,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Naive Bayes
@@ -845,13 +710,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
 
     /**
@@ -876,13 +735,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Naive Bayes Metrics
@@ -906,13 +759,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Decision Tree Classification
@@ -941,13 +788,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Decision Tree Classification Predict
@@ -976,13 +817,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      *  Decision Tree Classification Metrics
@@ -1012,13 +847,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      * Random Forest Classification
@@ -1047,13 +876,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args);
     };
     /**
      * Random Forest Classification Predict
@@ -1082,13 +905,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      * Random Forest Classification Metrics
@@ -1117,13 +934,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
 
     /// Random Forest Classification
@@ -1151,13 +962,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id: projectId,
-        parent_id: parentId,
-        block_id: blockId,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args);
     };
 
     /**
@@ -1188,13 +993,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id: projectId,
-        parent_id: parentId,
-        block_id: blockId,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
 
     /**
@@ -1213,9 +1012,9 @@ const MachineLearning = (superclass) =>
      */
 
     kmeans_clustering_find_clusters = (
-      projectId,
-      parentId,
-      blockId,
+      project_id,
+      parent_id,
+      block_id,
       args = {}
     ) => {
       // mandatory parameters
@@ -1225,13 +1024,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id: projectId,
-        parent_id: parentId,
-        block_id: blockId,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      * K-Means Clustering
@@ -1247,7 +1040,7 @@ const MachineLearning = (superclass) =>
      *
      * @returns {object} StateManagement Object
      */
-    kmeans_clustering = (projectId, parentId, blockId, args = {}) => {
+    kmeans_clustering = (project_id, parent_id, block_id, args = {}) => {
       // mandatory parameters
       const functionCode = "ML_CG_2";
 
@@ -1255,13 +1048,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id: projectId,
-        parent_id: parentId,
-        block_id: blockId,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args);
     };
 
     /**
@@ -1279,7 +1066,7 @@ const MachineLearning = (superclass) =>
      * @returns {object} StateManagement Object
      */
 
-    kmeans_clustering_predict = (projectId, parentId, blockId, args = {}) => {
+    kmeans_clustering_predict = (project_id, parent_id, block_id, args = {}) => {
       // mandatory parameters
       const functionCode = "ML_CG_2_P";
 
@@ -1287,13 +1074,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id: projectId,
-        parent_id: parentId,
-        block_id: blockId,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args);
     };
     /**
      * XGBoost
@@ -1310,7 +1091,7 @@ const MachineLearning = (superclass) =>
      * @returns {object} StateManagement Object
      */
 
-    xgboost = (projectId, parentId, blockId, args = {}) => {
+    xgboost = (project_id, parent_id, block_id, args = {}) => {
       // mandatory parameters
       const functionCode = "MS_X";
 
@@ -1318,13 +1099,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id: projectId,
-        parent_id: parentId,
-        block_id: blockId,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      * XGBoost Predict
@@ -1341,7 +1116,7 @@ const MachineLearning = (superclass) =>
      * @returns {object} StateManagement Object
      */
 
-    xgboost_predict = (projectId, parentId, blockId, args = {}) => {
+    xgboost_predict = (project_id, parent_id, block_id, args = {}) => {
       // mandatory parameters
       const functionCode = "MS_X_P";
 
@@ -1349,13 +1124,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id: projectId,
-        parent_id: parentId,
-        block_id: blockId,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
     /**
      * XGBoost Metrics
@@ -1372,7 +1141,7 @@ const MachineLearning = (superclass) =>
      * @returns {object} StateManagement Object
      */
 
-    xgboost_metrics = (projectId, parentId, blockId, args = {}) => {
+    xgboost_metrics = (project_id, parent_id, block_id, args = {}) => {
       // mandatory parameters
       const functionCode = "MS_X_M";
 
@@ -1380,13 +1149,7 @@ const MachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id: projectId,
-        parent_id: parentId,
-        block_id: blockId,
-        function_code: functionCode,
-        args,
-      });
+      return this.machineLearningAPI(project_id, parent_id, block_id,functionCode, args)
     };
   };
 

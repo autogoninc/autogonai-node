@@ -1,6 +1,7 @@
 "use strict";
 
 const constants = require("../helpers/constants");
+const { handleRequestError } = require("../helpers/utils");
 const { validateRequiredParameters } = require("../helpers/validation");
 
 /**
@@ -10,6 +11,15 @@ const { validateRequiredParameters } = require("../helpers/validation");
  */
 const DataProcessing = (superclass) =>
   class extends superclass {
+    dataProcessingAPI(project_id,parent_id, block_id,functionCode,args){
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      }).then((res)=>res.data).catch(handleRequestError);
+    }
     /**
      * Data Input
      *
@@ -36,13 +46,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -67,13 +71,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -98,13 +96,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -129,13 +121,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -160,13 +146,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -191,13 +171,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -222,13 +196,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -253,13 +221,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -284,13 +246,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -315,13 +271,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -346,13 +296,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -377,13 +321,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -408,13 +346,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -439,13 +371,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -470,13 +396,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -501,13 +421,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -532,13 +446,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Dataset Datatypes
@@ -562,13 +470,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Dataset Uniques
@@ -592,13 +494,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Dataset Stats Counts
@@ -622,13 +518,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Principal Component Analysis
@@ -652,13 +542,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * Automated Data Preprocessing
@@ -678,6 +562,9 @@ const DataProcessing = (superclass) =>
       // Automated Data Prepcoessing goes in here
 
       const functionCode = "DP_ADP";
+      validateRequiredParameters(functionCode, args);
+
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     dataset_datatypes(project_id, parent_id, block_id, args = {}) {
@@ -688,13 +575,7 @@ const DataProcessing = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.dataProcessingAPI(project_id,parent_id,block_id,functionCode,args);
     }
   };
 
