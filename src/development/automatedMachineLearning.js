@@ -1,10 +1,33 @@
 "use strict";
 
 const constants = require("../helpers/constants");
+const { handleRequestError } = require("../helpers/utils");
 const { validateRequiredParameters } = require("../helpers/validation");
 
 const AutoMachineLearning = (superclass) =>
   class extends superclass {
+/**
+ * autoMachineLearningAPI
+ *
+ * This method sends a request to the AutoGon engine to perform automated machine learning tasks.
+ *
+ * @param {int} project_id - The current project ID.
+ * @param {int} parent_id - The previous block ID.
+ * @param {int} block_id - The current block ID.
+ * @param {string} functionCode - The function code for the specific task.
+ * @param {object} args - The block arguments (refer to documentation).
+ *
+ * @returns {object} - The StateManagement Object.
+ */
+    autoMachineLearningAPI(project_id,parent_id, block_id,functionCode,args){
+      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
+        project_id,
+        parent_id,
+        block_id,
+        function_code: functionCode,
+        args,
+      }).then((res)=>res.data).catch(handleRequestError);
+    }
     /**
      * AutoMachineLearnin
      *
@@ -28,13 +51,7 @@ const AutoMachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.autoMachineLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * AutoRegression
@@ -58,13 +75,7 @@ const AutoMachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.autoMachineLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -89,13 +100,7 @@ const AutoMachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.autoMachineLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -120,13 +125,7 @@ const AutoMachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.autoMachineLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
 
     /**
@@ -151,13 +150,7 @@ const AutoMachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.autoMachineLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
     /**
      * AutoClassification
@@ -181,13 +174,7 @@ const AutoMachineLearning = (superclass) =>
       validateRequiredParameters(functionCode, args);
 
       // send request
-      return this.sendRequest("POST", constants.ENGINE_ENDPOINT, {
-        project_id,
-        parent_id,
-        block_id,
-        function_code: functionCode,
-        args,
-      });
+      return this.autoMachineLearningAPI(project_id,parent_id,block_id,functionCode,args);
     }
   };
 
