@@ -1,6 +1,6 @@
 {
   "name": "autogonai-node",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node.js connector for Autogon Public APIs",
   "main": "index.js",
   "scripts": {
