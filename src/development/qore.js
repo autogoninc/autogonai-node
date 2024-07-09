@@ -26,7 +26,7 @@ class VisionAI {
    * @returns {object}
    */
 
-  text_detection(imagePath) {
+  textDetection(imagePath) {
     const endpoint = "/services/vision-ai/";
 
     const form = new FormData();
@@ -61,7 +61,7 @@ class VisionAI {
    * @returns {object}
    */
 
-  document_text_detection(imagePath) {
+  documentTextDetection(imagePath) {
     const endpoint = "/services/vision-ai/";
 
     const form = new FormData();
@@ -96,7 +96,7 @@ class VisionAI {
    * @returns {object}
    */
 
-  label_detection(imagePath) {
+  labelDetection(imagePath) {
     const endpoint = "/services/vision-ai/";
 
     const form = new FormData();
@@ -130,7 +130,7 @@ class VisionAI {
    *
    * @returns {object}
    */
-  landmark_detection(imagePath) {
+  landmarkDetection(imagePath) {
     const endpoint = "/services/vision-ai/";
 
     const form = new FormData();
@@ -165,7 +165,7 @@ class VisionAI {
    * @returns {object}
    */
 
-  logo_detection(imagePath) {
+  logoDetection(imagePath) {
     const endpoint = "/services/vision-ai/";
 
     const form = new FormData();
@@ -198,7 +198,7 @@ class VisionAI {
    *
    * @returns {object}
    */
-  web_detection(imagePath) {
+  webDetection(imagePath) {
     const endpoint = "/services/vision-ai/";
 
     const form = new FormData();
@@ -231,7 +231,7 @@ class VisionAI {
    *
    * @returns {object}
    */
-  object_detection(imagePath) {
+  objectDetection(imagePath) {
     const endpoint = "/services/vision-ai/";
 
     const form = new FormData();
@@ -266,7 +266,7 @@ class VisionAI {
    *
    * @returns {object}
    */
-  image_generation(prompt, output_size) {
+  imageGeneration(prompt, output_size) {
     const endpoint = "/services/image-generation/";
     const body = {
       prompt: prompt,
@@ -306,7 +306,7 @@ class VisionAI {
    *
    * @returns {object}
    */
-  stable_diffusion(text) {
+  stableDiffusion(text) {
     const endpoint = "/services/vision-ai/";
 
     const headers = {
@@ -340,7 +340,7 @@ class VisionAI {
    * @returns {object}
    */
 
-  image_captioning(imagePath, image_url) {
+  imageCaptioning(imagePath, image_url) {
     const endpoint = "/services/image-captioning";
 
     const form = new FormData();
@@ -376,7 +376,7 @@ class VisionAI {
     //  *
     //  * @returns {object}
     //  */
-  document_qa(imagePath, question) {
+  documentQa(imagePath, question) {
     const endpoint = "/services/vision-ai/";
 
     const form = new FormData();
@@ -412,7 +412,7 @@ class VisionAI {
    *
    * @returns {object}
    */
-  visual_question_answer(imagePath, text) {
+  visualQuestionAnswer(imagePath, text) {
     const endpoint = "/services/vision-ai/";
 
     const form = new FormData();
@@ -431,6 +431,79 @@ class VisionAI {
       headers,
       text,
       image_url,
+    }).then((res)=>res.data).catch(handleRequestError);
+  }
+  /**
+   *
+   * License Plate Detector
+   *
+   * Detects license plate in a given image
+   *
+   *
+   * @param {string} image_urls
+   * @param {number} [confidence_thresh=0.5]
+   * @param {number} [overlap_thresh=0.5]
+   *
+   *
+   * {@link https://docs.autogon.ai/autogon-qore/vision-ai}
+   *
+   * @returns {object}
+   */
+  licensePlateDetector(image_urls, confidence_thresh = 0.5, overlap_thresh = 0.5) {
+    const endpoint = "/services/license-plate-detection/";
+  
+    const headers = {
+      // ...form.getHeaders(),
+      "Content-Type":"application/json",
+      "X-AUG-KEY": this.apiKey,
+      "User-Agent": `${constants.appName}/${constants.appVersion}`,
+    };
+  
+    const payload = JSON.stringify({
+      image_urls: [image_urls],
+      confidence_thresh:confidence_thresh,
+      overlap_thresh:overlap_thresh,
+    });
+    const config = {
+      method:'post',
+      url:constants.BASE_URL + endpoint,
+      headers:headers,
+      data:payload
+    }
+  
+    return axios.request(config)
+      .then((res) => res.data)
+      .catch(handleRequestError);
+  }
+  /**
+   *
+   * Motion Detection
+   *
+   * Provides real time, accurate motion tracking for video streams
+   *
+   *
+   * @param {string} videoUrls
+   *
+   *
+   * {@link https://docs.autogon.ai/autogon-qore/vision-ai#motion-detection}
+   *
+   * @returns {object}
+   */
+  motionDetection(videoUrls) {
+    const endpoint = "/services/motion-detection/";
+    const form = new FormData();
+    form.append("video", fs.createReadStream(videoUrls));
+    // form.append("operation", "document_question_answer");
+
+    const headers = {
+      ...form.getHeaders(),
+   
+        "X-AUG-KEY": this.apiKey,
+        "User-Agent": `${constants.appName}/${constants.appVersion}`,
+    };
+
+    return axios.post(constants.BASE_URL + endpoint, form, {
+      headers,
     }).then((res)=>res.data).catch(handleRequestError);
   }
 }
@@ -454,7 +527,7 @@ class NaturalLanguageAI {
    *
    * @returns {object}
    */
-  sentiment_analysis(text) {
+  sentimentAnalysis(text) {
     const endpoint = "/services/sentiment-analysis/";
 
     const headers = {
@@ -488,7 +561,7 @@ class NaturalLanguageAI {
    * @returns {object}
    */
 
-  text_summary(text, max_length, min_length) {
+  textSummary(text, max_length, min_length) {
     const endpoint = "/services/text-summary/";
     const form = new FormData();
     form.append("text", text);
@@ -523,7 +596,7 @@ class NaturalLanguageAI {
    * @returns {object}
    */
 
-  ask_your_data(data, prompt) {
+  askYourData(data, prompt) {
     const endpoint = "/services/ask-your-data/";
 
     const form = new FormData();
@@ -555,7 +628,7 @@ const dataInput ={
    *
    * @returns {object}
    */
-  text_classification(text) {
+  textClassification(text) {
     const endpoint = "/services/text-classification/";
 
     const form = new FormData();
@@ -587,7 +660,7 @@ const dataInput ={
    *
    * @returns {object}
    */
-  generate_synthetic_datasets(prompt, row) {
+  generateSyntheticDatasets(prompt, row) {
     const endpoint = "/services/generate-data/";
 
     const form = new FormData();
@@ -622,7 +695,7 @@ const dataInput ={
    *
    * @returns {object}
    */
-  create_chatbot(agentId, question) {
+  chatbot(agentId, question) {
     const endpoint = `/services/chatbot/${agentId}/chat/`;
     function uuid() {
       return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
@@ -662,7 +735,7 @@ const dataInput ={
   *
   * @link {@link https://docs.autogon.ai/autogon-qore/natural-language-ai/easy-marker}
   */
-  easy_maker(easy, question, answer = null, word_length = 30) {
+  easyMaker(easy, question, answer = null, word_length = 30) {
     const endpoint = "/services/essay-marker/";
 
     const form = new FormData();
@@ -695,7 +768,7 @@ const dataInput ={
  *
  * @link {@link https://docs.autogon.ai/autogon-qore/natural-language-ai/easy-marker}
  */
-  job_description_analyzer(job_description, resume_url) {
+  resumeRanker(job_description, resume_url) {
     const endpoint = "/services/rank-resume/";
 
     const form = new FormData();
@@ -731,7 +804,7 @@ const dataInput ={
    * ]
    * @returns {Promise} - A promise representing the result of the analysis.
    */
-  employee_analyzer(survey) {
+  employeeAnalyzer(survey) {
     const endpoint = "/services/employee-analysis/";
 
     const headers = {
@@ -759,7 +832,7 @@ const dataInput ={
  *
  * @link {@link https://docs.autogon.ai/autogon-qore/natural-language-ai}
  */
-  generate_dataset(prompt, row = 100) {
+  generateDataset(prompt, row = 100) {
     const endpoint = "/services/generate-data/";
     console.log(this.apiKey);
 
@@ -792,7 +865,7 @@ const dataInput ={
  *
  * @link {@link https://docs.autogon.ai/autogon-qore/natural-language-ai/text-translation}
  */
-  translate_text(text, target_language, source_language = null) {
+  translateText(text, target_language, source_language = null) {
     const endpoint = "/services/text-translation/";
 
     const form = new FormData();
@@ -845,7 +918,7 @@ class VoiceCloning {
    *
    * @returns {object}
    */
-  create_a_voice(audio, voiceName, voiceDscription) {
+  createAVoice(audio, voiceName, voiceDscription) {
     const endpoint = "/services/voice-cloning/voices/";
 
     const form = new FormData();
@@ -878,7 +951,7 @@ class VoiceCloning {
    * @returns {object}
    */
 
-  get_voice() {
+  getVoice() {
     const endpoint = "/services/voice-cloning/voices/list/";
 
     const form = new FormData();
@@ -955,10 +1028,10 @@ class Agriculture {
   }
 
    /**
-   * Make a generic health studies API call.
+   * Make a generic agro studies API call.
    *
-   * @param {string} studyType - The type of health study.
-   * @param {Array} image_urls - The URLs of the images to be analyzed.
+   * @param {string} studyType - The type of agrostudy.
+   * @param {string} image_urls - The URLs of the images to be analyzed.
    * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
    * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score.
    * @returns {Promise} - A promise that resolves to the response of the API call.
@@ -966,17 +1039,24 @@ class Agriculture {
    agroStudiesAPI(studyType, image_urls, overlap_threshold = 0.5, confidence_threshold = 0.3) {
     const endpoint = "/services/agro-studies/";
     const headers = {
+      "Content-Type":"application/json",
       "X-AUG-KEY": this.apiKey,
       "User-Agent": `${constants.appName}/${constants.appVersion}`,
     };
-    const body = {
+    const body = JSON.stringify({
       "study_type": studyType,
-      "image_urls": image_urls,
+      "image_urls": [image_urls],
       "overlap_threshold": overlap_threshold,
       "confidence_threshold": confidence_threshold,
-    };
+    });
+    const config = {
+      method:'post',
+      url:constants.BASE_URL + endpoint,
+      headers:headers,
+      data:body
+    }
 
-    return axios.post(constants.BASE_URL + endpoint, body, { headers })
+    return axios.request(config)
       .then(response => response.data)
       .catch(this.handleRequestError.bind(this));
   }
@@ -990,7 +1070,7 @@ class Agriculture {
  * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected strawberries.
  * @returns {Promise} - A promise that resolves to the detection results.
  */
-  ripe_strawberry_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  ripeStrawberryDetection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
   return this.agroStudiesAPI("ripe_strawberry_detection",image_urls, overlap_threshold, confidence_threshold)
   }
 
@@ -1004,19 +1084,19 @@ class Agriculture {
  * @returns {Promise} - A promise that resolves to the detection results.
  */
 
-  crop_weed_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  cropWeedDetection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
   return this.agroStudiesAPI("crop_weed_detection",image_urls, overlap_threshold, confidence_threshold)
   }
 
   /**
- * Performs palm tree health detection on the given image URLs.
+ * Performs crop weed detection on the given image URLs.
  * 
  * @param {Array} image_urls - An array of image URLs to perform detection on.
  * @param {number} [overlap_threshold=0.5] - The threshold for overlapping bounding boxes.
  * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected palm tree health.
  * @returns {Promise} - A promise that resolves to the detection results.
  */
-  palm_tree_health_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  palmTreeHealthHetection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
     return this.agroStudiesAPI("palm_tree_health_detection",image_urls, overlap_threshold, confidence_threshold)
   }
 
@@ -1029,7 +1109,7 @@ class Agriculture {
  * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected cashew diseases.
  * @returns {Promise} - A promise that resolves to the detection results.
  */
-  cashew_disease_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  cashewDiseaseDetection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
   return this.agroStudiesAPI("cashew_disease_detection",image_urls, overlap_threshold, confidence_threshold)
   }
 
@@ -1042,7 +1122,7 @@ class Agriculture {
  * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected apple diseases.
  * @returns {Promise} - A promise that resolves to the detection results.
  */
-  apple_disease_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  appleDiseaseDetection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
     
   return this.agroStudiesAPI("apple_disease_detection",image_urls, overlap_threshold, confidence_threshold)
   }
@@ -1056,7 +1136,7 @@ class Agriculture {
  * @param {number} [confidence_threshold=0.3] - The threshold for confidence score of detected grapes.
  * @returns {Promise} - A promise that resolves to the detection results.
  */
-  grape_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  grapeDetection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
     return this.agroStudiesAPI("grape_detection",image_urls, overlap_threshold, confidence_threshold)
   }
 }
@@ -1099,17 +1179,24 @@ class Medical {
    healthStudiesAPI(studyType, image_urls, overlap_threshold = 0.5, confidence_threshold = 0.3) {
     const endpoint = "/services/health-studies/";
     const headers = {
+      "Content-Type":"application/json",
       "X-AUG-KEY": this.apiKey,
       "User-Agent": `${constants.appName}/${constants.appVersion}`,
     };
-    const body = {
+    const body = JSON.stringify({
       "study_type": studyType,
       "image_urls": image_urls,
       "overlap_threshold": overlap_threshold,
       "confidence_threshold": confidence_threshold,
-    };
+    });
+    const config = {
+      method:'post',
+      url:constants.BASE_URL + endpoint,
+      headers:headers,
+      data:body
+    }
 
-    return axios.post(constants.BASE_URL + endpoint, body, { headers })
+    return axios.request(config)
       .then(response => response.data)
       .catch(this.handleRequestError.bind(this));
   }
@@ -1122,7 +1209,7 @@ class Medical {
  * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected tools.
  * @returns {Promise} - A promise that resolves to the response of the API call.
  */
-surgical_tools_detection(image_urls, overlap_threshold = 0.5, confidence_threshold = 0.3) {
+surgicalToolsDetection(image_urls, overlap_threshold = 0.5, confidence_threshold = 0.3) {
   return this.healthStudiesAPI("surgical_tools_detection", image_urls, overlap_threshold, confidence_threshold);
 }
 
@@ -1134,7 +1221,7 @@ surgical_tools_detection(image_urls, overlap_threshold = 0.5, confidence_thresho
  * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected tuberculosis.
  * @returns {Promise} - A promise that resolves to the response of the API call.
  */
-  tuberculosis_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  tuberculosisDetection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
   return this.healthStudiesAPI("tuberculosis_detection", image_urls, overlap_threshold, confidence_threshold)
   }
 
@@ -1147,7 +1234,7 @@ surgical_tools_detection(image_urls, overlap_threshold = 0.5, confidence_thresho
  * @returns {Promise} - A promise that resolves to the response of the API call.
  */
 
-  cervical_fracture_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  cervicalFractureDetection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
    return this.healthStudiesAPI("cervical_fracture_detection",image_urls, overlap_threshold, confidence_threshold)
   }
 
@@ -1159,7 +1246,7 @@ surgical_tools_detection(image_urls, overlap_threshold = 0.5, confidence_thresho
  * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected abnormalities.
  * @returns {Promise} - A promise that resolves to the response of the API call.
  */
-  chest_xray_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  chestXrayDetection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
    return this.healthStudiesAPI("chest_xray_detection",image_urls, overlap_threshold, confidence_threshold)
   }
 
@@ -1171,7 +1258,7 @@ surgical_tools_detection(image_urls, overlap_threshold = 0.5, confidence_thresho
  * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected abnormalities.
  * @returns {Promise} - A promise that resolves to the response of the API call.
  */
-  kidney_stone_detection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  kidneyStoneDetection(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
     return this.healthStudiesAPI("kidney_stone_detection",image_urls, overlap_threshold, confidence_threshold)
   }
 
@@ -1183,7 +1270,7 @@ surgical_tools_detection(image_urls, overlap_threshold = 0.5, confidence_thresho
  * @param {number} [confidence_threshold=0.3] - The threshold for the confidence score of detected abnormalities.
  * @returns {Promise} - A promise that resolves to the response of the API call.
  */
-  head_ct_scan_analyzer(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
+  headCtScanAnalyzer(image_urls,overlap_threshold=0.5,confidence_threshold=0.3){
    return this.healthStudiesAPI("head_ct_scan_analyzer",image_urls, overlap_threshold, confidence_threshold)
   }
 }
