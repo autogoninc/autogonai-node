@@ -1,3 +1,5 @@
 "use strict";
 
-module.exports.Client = require("./src/client");
+const Client = require("./src/client");
+
+module.exports = { Client };
