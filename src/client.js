@@ -57,13 +57,12 @@ class Client extends flowObjects(...Object.values(blocks))(API) {
       },
     };
 
-    return axios.post(
-      constants.BASE_URL + endpoint,
-      form,
-      {
+    return axios
+      .post(constants.BASE_URL + endpoint, form, {
         headers,
-      }
-    ).then((res)=>res.data).catch(handleRequestError);
+      })
+      .then((res) => res.data)
+      .catch(handleRequestError);
   }
 }
 
