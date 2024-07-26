@@ -8,10 +8,6 @@ The AutogonAI Node.js library is a tool for interacting with AutogonAI's AI auto
 npm install autogonai-node
 ```
 
-```bash
-npm install axios
-```
-
 ## Documentation
 
 For detailed information and API documentation, please visit the [Documentation](https://docs.autogon.ai/).
@@ -28,8 +24,7 @@ const {Client} = require("autogonai-node");
 const client = new Client(process.env.AUTOGON_API_KEY);
 
 // Make a request to generate an image from input text and specify image size
-async function main() {
-  try {
+
     // Input text to describe the image
     const inputText = "A dad and his son walking down the street towards a park";
 
@@ -48,13 +43,6 @@ async function main() {
         console.log("Image saved successfully as generated_image.png");
       }
     });
-  } catch (error) {
-    console.error("Error generating image:", error);
-  }
-}
-
-// Call the main function
-main();
 ```
 
 ## License

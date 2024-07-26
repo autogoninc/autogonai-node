@@ -254,20 +254,96 @@ class VisionAI {
 
     const form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
-    form.append("operation", "object_dection");
+    form.append("operation", "object_detection");
 
     const headers = {
       ...form.getHeaders(),
-      ...{
-        "X-AUG-KEY": this.apiKey,
-        "User-Agent": `${constants.appName}/${constants.appVersion}`,
-      },
+      "X-AUG-KEY": this.apiKey,
+      "User-Agent": `${constants.appName}/${constants.appVersion}`,
     };
 
     return axios
       .post(constants.BASE_URL + endpoint, form, {
         headers,
       })
+      .then((res) => res.data)
+      .catch(handleRequestError);
+  }
+
+  /**
+   *
+   *Object Detection
+   *
+   * @param {file} image image file to be processed
+   *
+   * {@link https://docs.autogon.ai/autogon-qore/vision-ai}
+   *
+   * @returns {object}
+   */
+  objectDetectionV2(image_urls, confidence_thresh = 0.5, overlap_thresh = 0.5) {
+    const endpoint = "/services/object-detection/";
+    const headers = {
+      // ...form.getHeaders(),
+      "Content-Type": "application/json",
+      "X-AUG-KEY": this.apiKey,
+      "User-Agent": `${constants.appName}/${constants.appVersion}`,
+    };
+
+    const payload = JSON.stringify({
+      image_urls: [image_urls],
+      confidence_thresh: confidence_thresh,
+      overlap_thresh: overlap_thresh,
+    });
+    const config = {
+      method: "post",
+      url: constants.BASE_URL + endpoint,
+      headers: headers,
+      data: payload,
+    };
+
+    return axios
+      .request(config)
+      .then((res) => res.data)
+      .catch(handleRequestError);
+  }
+
+  /**
+   *
+   * Traffic Light Detection
+   *
+   * @param {array} trafficLightImages
+   * @param {array} trafficImages
+   * @param {object}  breachRegion
+   *
+   * {@link https://docs.autogon.ai/autogon-qore/vision-ai}
+   *
+   * @returns {object}
+   */
+  trafficLightDetection(trafficLightImages, trafficImages, breachRegion) {
+    const endpoint = "/services/traffic-light-breach-detection/";
+    const headers = {
+      // ...form.getHeaders(),
+      "Content-Type": "application/json",
+      "X-AUG-KEY": this.apiKey,
+      "User-Agent": `${constants.appName}/${constants.appVersion}`,
+    };
+
+    const payload = JSON.stringify({
+      traffic_light_images: trafficLightImages,
+      traffic_images: trafficImages,
+      breach_region: breachRegion,
+      skip_lp_num_detection: false,
+      skip_traffic_light_classification: false,
+    });
+    const config = {
+      method: "post",
+      url: constants.BASE_URL + endpoint,
+      headers: headers,
+      data: payload,
+    };
+
+    return axios
+      .request(config)
       .then((res) => res.data)
       .catch(handleRequestError);
   }
@@ -997,20 +1073,20 @@ class VoiceCloning {
 
     const form = new FormData();
     form.append("audio", fs.createReadStream(audio));
-    const headers = {
-      // ...form.getHeaders(),
-      ...{
+    form.append("voice_name", voiceName);
+    form.append("voice_dscription", voiceDscription);
+    let config = {
+      method: "post",
+      url: constants.BASE_URL + endpoint,
+      headers: {
+        ...form.getHeaders(),
         "X-AUG-KEY": this.apiKey,
         "User-Agent": `${constants.appName}/${constants.appVersion}`,
       },
+      data: form,
     };
-
     return axios
-      .post(constants.BASE_URL + endpoint, form, {
-        headers,
-        voice_name: voiceName,
-        voice_dscription: voiceDscription,
-      })
+      .request(config)
       .then((res) => res.data)
       .catch(handleRequestError);
   }
@@ -1033,15 +1109,12 @@ class VoiceCloning {
 
     const form = new FormData();
     const headers = {
-      // ...form.getHeaders(),
-      ...{
-        "X-AUG-KEY": this.apiKey,
-        "User-Agent": `${constants.appName}/${constants.appVersion}`,
-      },
+      "X-AUG-KEY": this.apiKey,
+      "User-Agent": `${constants.appName}/${constants.appVersion}`,
     };
 
     return axios
-      .get(constants.BASE_URL + endpoint, form, {
+      .get(constants.BASE_URL + endpoint, {
         headers,
       })
       .then((res) => res.data)
@@ -1062,17 +1135,15 @@ class VoiceCloning {
    *
    * @returns {object}
    */
-  text_to_speech(voice_id, text) {
+  textToSpeech(voice_id, text) {
     const endpoint = "/services/voice-cloning/tts/";
     const form = new FormData();
     form.append("text", text);
     form.append("voice_id", voice_id);
     const headers = {
       ...form.getHeaders(),
-      ...{
-        "X-AUG-KEY": this.apiKey,
-        "User-Agent": `${constants.appName}/${constants.appVersion}`,
-      },
+      "X-AUG-KEY": this.apiKey,
+      "User-Agent": `${constants.appName}/${constants.appVersion}`,
     };
 
     return axios
